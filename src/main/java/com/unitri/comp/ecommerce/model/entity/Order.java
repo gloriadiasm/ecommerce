@@ -8,6 +8,12 @@ public class Order {
     private Long client_id;
     private OrderStatusEnum status;
 
+    public Order(Long id, Long client_id, OrderStatusEnum status) {
+        this.id = id;
+        this.client_id = client_id;
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }
