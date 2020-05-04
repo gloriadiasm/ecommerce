@@ -2,27 +2,27 @@ package com.unitri.comp.ecommerce.model.entity;
 
 public class Cart {
 
-    private Long id;
-    private Long clientId;
+    private int id;
+    private int clientId;
 
-    public Cart(Long id, Long clientId) {
+    public Cart(int id, int clientId) {
         this.id = id;
         this.clientId = clientId;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getClientId() {
+    public int getClientId() {
         return clientId;
     }
 
-    public void setClientId(Long clientId) {
+    public void setClientId(int clientId) {
         this.clientId = clientId;
     }
 
