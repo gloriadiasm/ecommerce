@@ -2,14 +2,14 @@ package com.unitri.comp.ecommerce.model.entity;
 
 public class Store {
 
-    private Long id;
+    private int id;
     private String name;
     private Long cnpj;
     private String addresses;
-    private Long sold_id;
-    private Long stock_id;
+    private int sold_id;
+    private int stock_id;
 
-    public Store(Long id, String name, Long cnpj, String addresses, Long sold_id, Long stock_id) {
+    public Store(int id, String name, Long cnpj, String addresses, int sold_id, int stock_id) {
         this.id = id;
         this.name = name;
         this.cnpj = cnpj;
@@ -19,10 +19,10 @@ public class Store {
     }
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -50,19 +50,20 @@ public class Store {
         this.addresses = addresses;
     }
 
-    public Long getSold_id() {
+    public int getSold_id() {
         return sold_id;
     }
 
-    public void setSold_id(Long sold_id) {
+    public void setSold_id(int sold_id) {
         this.sold_id = sold_id;
     }
 
-    public Long getStock_id() {
+    public int getStock_id() {
         return stock_id;
     }
 
-    public void setStock_id(Long stock_id) {
+    public void setStock_id(int stock_id) {
         this.stock_id = stock_id;
     }
+
 }

@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface SoldDao {
-    Sold findById(Long id) throws SQLException;
-    Sold findStore(Sold sold) throws SQLException;
+    Sold findById(int id) throws SQLException;
+    List<Sold> findSold(String name) throws SQLException;
     Sold create(Sold sold) throws SQLException;
     Sold update(Sold sold) throws SQLException;
     void delete(Sold sold) throws SQLException;
-    void deleteById() throws SQLException;
+    void deleteById(int id) throws SQLException;
     List<Sold> findAll() throws SQLException;
 }
