@@ -1,8 +1,6 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
-import com.unitri.comp.ecommerce.model.dao.OrderDao;
-import com.unitri.comp.ecommerce.model.enums.OrderStatusEnum;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -39,12 +37,12 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public void create(Category ategory) {
+    public void create(Category category) {
         try {
             PreparedStatement statement = connection.prepareStatement("insert into category values(?,?,?)");
             statement.setInt(1, category.getId());
-            statement.setInt(2, category.getClientId());
-            statement.setObject(3, category.getStatus());
+            statement.setString(2, category.getNome());
+            statement.setString(3, category.getDescription());
             statement.execute();
             statement.close();
         }catch (SQLException e){
@@ -54,7 +52,7 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public Order update(Order order) {
+    public Category update(Category category) {
         return null;
     }
 
@@ -62,7 +60,7 @@ public class CategoryDaoImpl implements CategoryDao {
     public void deleteById(int id) {
 
         try {
-            PreparedStatement statement = connection.prepareStatement("delete from order where id=?");
+            PreparedStatement statement = connection.prepareStatement("delete from category where id=?");
             statement.setInt(1, id);
             statement.execute();
             statement.close();
@@ -73,24 +71,24 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public List<Order> findAll() {
-        List<Order> orders = new ArrayList<>();
+    public List<Category> findAll() {
+        List<Category> categorys = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            String sql = "select *from ´order´";
+            String sql = "select *from ´category´";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
-                Order order = new Order(resultSet.getInt("id"),
-                        resultSet.getInt("client_id"),
-                        (OrderStatusEnum) resultSet.getObject("status"));
-                orders.add(order);
+                Category category = new Category(resultSet.getInt("id"),
+                        resultSet.getString("nome"),
+                        resultSet.getObject("description"));
+                category.add(category);
             }
             statement.close();
-            return orders;
+            return categorys;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return orders;
+        return categorys;
     }
 
 }

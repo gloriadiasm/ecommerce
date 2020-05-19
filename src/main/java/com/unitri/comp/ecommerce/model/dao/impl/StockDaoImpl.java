@@ -25,6 +25,7 @@ public class StockDaoImpl implements StockDao {
 
             while(resultSet.next()) {
                 stock = new Stock(resultSet.getInt("id"),
+                        resultSet.getInt("quantity"),
                         resultSet.getInt("product_id"));
             }
             statement.close();
@@ -39,9 +40,10 @@ public class StockDaoImpl implements StockDao {
     public Stock findByClientId(Stock stock) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select *from stock where client_id = "+stock.getClientId());
+            ResultSet resultSet = statement.executeQuery("select *from stock where product_id = "+stock.getProductId());
             while(resultSet.next()) {
                 stock = new Stock(resultSet.getInt("id"),
+                        resultSet.getInt("quantity"),
                         resultSet.getInt("product_id"));
             }
             statement.close();
@@ -58,7 +60,8 @@ public class StockDaoImpl implements StockDao {
         try {
             PreparedStatement statement = connection.prepareStatement("insert into stock values(?,?)");
             statement.setInt(1, stock.getId());
-            statement.setInt(2, stock.getClientId());
+            statement.setInt(2, stock.getQuabtity());
+            statement.setInt(3, stock.getProductId());
             statement.execute();
             statement.close();
         }catch (SQLException e){
@@ -82,19 +85,19 @@ public class StockDaoImpl implements StockDao {
     @Override
     public List<stock> findAll() {
 
-        List<Stock> stock = new ArrayList<>();
+        List<Stock> stocks = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select *from Stock");
             while (resultSet.next()){
                 Stock stock = new Stock(resultSet.getInt("id"), resultSet.getInt("product_id"));
-                 carts.add(stock);
+                 stock.add(stock);
             }
             statement.close();
-            return stock;
+            return stocks;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return stock;
+        return stocks;
     }
 }

@@ -4,10 +4,9 @@ import java.util.List;
 
 public class StockService {
 
-    public class CategoryService {
         final StockDao stockDao = new StockDaoImpl();
 
-        public CategoryService() {
+        public StockService() {
         }
 
         public  Stock findById(Long id) {
