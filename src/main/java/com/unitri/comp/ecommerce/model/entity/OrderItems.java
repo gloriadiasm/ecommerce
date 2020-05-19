@@ -2,33 +2,41 @@ package com.unitri.comp.ecommerce.model.entity;
 
 public class OrderItems {
 
-    private Long id;
-    private Long order_id;
-    private Long product_id;
+    private int id;
+    private int order_id;
+    private int product_id;
     private Long price;
     private int quantity;
 
-    public Long getId() {
+    public OrderItems(int id, int order_id, int product_id, Long price, int quantity) {
+        this.id = id;
+        this.order_id = order_id;
+        this.product_id = product_id;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getOrder_id() {
+    public int getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(Long order_id) {
+    public void setOrder_id(int order_id) {
         this.order_id = order_id;
     }
 
-    public Long getProduct_id() {
+    public int getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(Long product_id) {
+    public void setProduct_id(int product_id) {
         this.product_id = product_id;
     }
 
