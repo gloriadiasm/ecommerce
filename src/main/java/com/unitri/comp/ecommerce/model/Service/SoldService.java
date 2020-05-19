@@ -32,6 +32,6 @@ public class SoldService {
         soldDao.deleteById(id);
     }
     public List<Sold> findAll() throws SQLException {
-        return findAll();
+        return soldDao.findAll();
     }
 }

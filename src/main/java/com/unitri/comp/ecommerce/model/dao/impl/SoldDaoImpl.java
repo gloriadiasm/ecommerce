@@ -21,21 +21,20 @@ public class SoldDaoImpl implements SoldDao {
 
         Sold sold = null;
 
+
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from sold where id = "+id);
-            while(resultSet.next()) {
+            ResultSet resultSet = statement.executeQuery("select * from sold where id = " + id);
+            while (resultSet.next()) {
                 sold = new Sold(resultSet.getInt("id"),
-                                resultSet.getInt("product_id"),
-                                resultSet.getInt("quantity"),
-                                resultSet.getDouble("price"));
+                        resultSet.getInt("product_id"),
+                        resultSet.getInt("quantity"),
+                        resultSet.getDouble("price"));
             }
             resultSet.close();
             return sold;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            connection.close();
         }
         return sold;
     }
@@ -47,39 +46,37 @@ public class SoldDaoImpl implements SoldDao {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from sold where name like '%"+name+"%'");
+            ResultSet resultSet = statement.executeQuery("select * from sold where name like '%" + name + "%'");
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 sold = new Sold(resultSet.getInt("id"),
-                                resultSet.getInt("product_id"),
-                                resultSet.getInt("quantity"),
-                                resultSet.getDouble("price"));
+                        resultSet.getInt("product_id"),
+                        resultSet.getInt("quantity"),
+                        resultSet.getDouble("price"));
 
                 solds.add(sold);
             }
 
             statement.close();
             return solds;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-
-        } finally {
-            connection.close();
-            return solds;
+            return null;
 
         }
     }
 
     @Override
     public Sold create(Sold sold) throws SQLException {
+
         try {
             int id = sold.getId();
             int product_id = sold.getProduct_id();
             int quantity = sold.getQuantity();
             double price = sold.getPrice();
 
-            String sql = "insert into sold(id, product_id, quantity, price) "+
-                    "values ("+id+","+product_id+","+quantity+","+price+")";
+            String sql = "insert into sold(id, product_id, quantity, price) " +
+                    "values (" + id + "," + product_id + "," + quantity + "," + price + ")";
 
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
@@ -91,9 +88,6 @@ public class SoldDaoImpl implements SoldDao {
 
             throw new RuntimeException(e);
 
-        }finally {
-            connection.close();
-            return null;
         }
     }
 
@@ -104,23 +98,19 @@ public class SoldDaoImpl implements SoldDao {
         int quantity = sold.getQuantity();
         double price = sold.getPrice();
 
-        String sql ="update sold set id ="+ id +
-                ", product_id ="+ product_id +
-                ", quantity="+ quantity +
-                ", price= "+ price;
+        String sql = "update sold set id =" + id +
+                ", product_id =" + product_id +
+                ", quantity=" + quantity +
+                ", price= " + price;
 
-        try{
+        try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             statement.close();
             return sold;
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
-            return sold;
-
         }
     }
 
@@ -128,52 +118,54 @@ public class SoldDaoImpl implements SoldDao {
     public void delete(Sold sold) throws SQLException {
         int id = sold.getId();
 
-        String sql = "delete from sold where id = "+id;
+        String sql = "delete from sold where id = " + id;
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
 
             statement.close();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
         }
 
     }
 
     @Override
     public void deleteById(int id) throws SQLException {
-        String sql = "delete from sold where id="+id;
+        String sql = "delete from sold where id=" + id;
+
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
 
             statement.close();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
         }
 
     }
 
     @Override
     public List<Sold> findAll() throws SQLException {
+
+        String sql = "select * from sold";
+
         try {
             List<Sold> solds = new ArrayList<Sold>();
-            PreparedStatement statement = this.connection.prepareStatement("select * from sold");
 
-            ResultSet resultSet = statement.executeQuery();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
 
-            while(resultSet.next()) {
+
+
+            while (resultSet.next()) {
 
                 Sold sold = new Sold(resultSet.getInt("id"),
-                                     resultSet.getInt("product_id"),
-                                     resultSet.getInt("quantity"),
-                                     resultSet.getDouble("price"));
+                        resultSet.getInt("product_id"),
+                        resultSet.getInt("quantity"),
+                        resultSet.getDouble("price"));
 
                 solds.add(sold);
             }
@@ -184,8 +176,6 @@ public class SoldDaoImpl implements SoldDao {
             return solds;
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
         }
 
     }
