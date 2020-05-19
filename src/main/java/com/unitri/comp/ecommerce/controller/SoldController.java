@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
 
-@RestController("/sold")
+@RestController
 public class SoldController {
 
     SoldService soldService;
@@ -16,31 +16,31 @@ public class SoldController {
     SoldController() throws SQLException {
         this.soldService = new SoldService();
     }
-    @GetMapping("sold/id")
+    @GetMapping("/sold/{id}")
     public Sold findById(@PathVariable int id) throws SQLException {
         return soldService.findById(id);
     }
-    @GetMapping("sold/name")
+    @GetMapping("/sold/{name}")
     public List<Sold> findSold(@PathVariable String name) throws SQLException {
         return soldService.findSold(name);
     }
-    @PostMapping("sold/create")
+    @PostMapping("/sold/create")
     public Sold create(@RequestBody Sold sold) throws SQLException {
         return soldService.create(sold);
     }
-    @PutMapping("sold/update")
+    @PutMapping("/sold/update")
     public Sold update(@RequestBody Sold sold) throws SQLException {
         return soldService.update(sold);
     }
-    @DeleteMapping("sold/delete")
+    @DeleteMapping("/sold/delete")
     public void delete(@RequestBody Sold sold) throws SQLException {
         soldService.delete(sold);
     }
-    @DeleteMapping("sold/delete/id")
+    @DeleteMapping("/sold/delete/{id}")
     public void deleteById(@PathVariable int id) throws SQLException {
         soldService.deleteById(id);
     }
-    @GetMapping("sold/select")
+    @GetMapping("/sold/select")
     public List<Sold> findAll() throws SQLException {
         return soldService.findAll();
     }

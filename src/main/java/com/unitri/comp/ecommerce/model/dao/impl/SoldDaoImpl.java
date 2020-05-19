@@ -23,7 +23,7 @@ public class SoldDaoImpl implements SoldDao {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from sold where id = "+id+";");
+            ResultSet resultSet = statement.executeQuery("select * from sold where id = "+id);
             while(resultSet.next()) {
                 sold = new Sold(resultSet.getInt("id"),
                                 resultSet.getInt("product_id"),
@@ -47,7 +47,7 @@ public class SoldDaoImpl implements SoldDao {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from sold where name like '%"+name+"%';");
+            ResultSet resultSet = statement.executeQuery("select * from sold where name like '%"+name+"%'");
 
             while(resultSet.next()) {
                 sold = new Sold(resultSet.getInt("id"),
@@ -164,7 +164,7 @@ public class SoldDaoImpl implements SoldDao {
     public List<Sold> findAll() throws SQLException {
         try {
             List<Sold> solds = new ArrayList<Sold>();
-            PreparedStatement statement = this.connection.prepareStatement("select * from sold;");
+            PreparedStatement statement = this.connection.prepareStatement("select * from sold");
 
             ResultSet resultSet = statement.executeQuery();
 
