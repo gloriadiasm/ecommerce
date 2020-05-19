@@ -17,7 +17,7 @@ public class CategoryService {
     }
 
     public void create(Category category) {
-        CategoryDao.create(cart);
+        CategoryDao.create(category);
     }
 
     public void deleteById(int id) {
