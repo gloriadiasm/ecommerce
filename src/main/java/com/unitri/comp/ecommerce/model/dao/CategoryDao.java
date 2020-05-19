@@ -1,10 +1,8 @@
 package com.unitri.comp.ecommerce.model.dao;
 
-import com.unitri.comp.ecommerce.model.entity.CartItems;
-
 import java.util.List;
 
-public interface CartItemsDao {
+public interface CategoryDao {
 
     CartItems findById(Long id);
     void create(CartItems cartItems);

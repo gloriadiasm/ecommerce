@@ -1,14 +1,13 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
-import com.unitri.comp.ecommerce.model.dao.CartItemsDao;
-import com.unitri.comp.ecommerce.model.entity.CartItems;
+import com.unitri.comp.ecommerce.model.dao.CategoryDao;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartItemsDaoImpl implements CartItemsDao {
+public class CartItemsDaoImpl implements CategoryDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 

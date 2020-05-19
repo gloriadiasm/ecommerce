@@ -1,7 +1,5 @@
 package com.unitri.comp.ecommerce.controller;
 
-import com.unitri.comp.ecommerce.model.entity.CartItems;
-import com.unitri.comp.ecommerce.model.service.CartItemsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

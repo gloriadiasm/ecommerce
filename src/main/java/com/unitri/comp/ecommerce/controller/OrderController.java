@@ -1,7 +1,5 @@
 package com.unitri.comp.ecommerce.controller;
 
-import com.unitri.comp.ecommerce.model.entity.Order;
-import com.unitri.comp.ecommerce.model.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

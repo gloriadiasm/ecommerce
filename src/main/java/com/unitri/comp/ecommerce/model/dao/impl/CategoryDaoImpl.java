@@ -2,50 +2,49 @@ package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 import com.unitri.comp.ecommerce.model.dao.OrderDao;
-import com.unitri.comp.ecommerce.model.entity.Order;
 import com.unitri.comp.ecommerce.model.enums.OrderStatusEnum;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDaoImpl implements OrderDao {
+public class CategoryDaoImpl implements CategoryDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public OrderDaoImpl() {
+    public CategoryDaoImpl() {
     }
 
     @Override
-    public Order findById(Long id) {
+    public Category findById(Long id) {
 
-        Order order = null;
+        Category category = null;
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select *from order where id = "+id);
+            ResultSet resultSet = statement.executeQuery("select *from category where id = "+id);
 
             while(resultSet.next()) {
-                order = new Order(resultSet.getInt("id"),
-                        resultSet.getInt("client_id"),
-                        (OrderStatusEnum) resultSet.getObject("status"));
+                category = new Category(resultSet.getInt("id"),
+                        resultSet.getString("nome"),
+                        resultSet.getObject("description"));
             }
             statement.close();
-            return order;
+            return category;
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return order;
+        return category;
 
     }
 
     @Override
-    public void create(Order order) {
+    public void create(Category ategory) {
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into order values(?,?,?)");
-            statement.setInt(1, order.getId());
-            statement.setInt(2, order.getClientId());
-            statement.setObject(3, order.getStatus());
+            PreparedStatement statement = connection.prepareStatement("insert into category values(?,?,?)");
+            statement.setInt(1, category.getId());
+            statement.setInt(2, category.getClientId());
+            statement.setObject(3, category.getStatus());
             statement.execute();
             statement.close();
         }catch (SQLException e){

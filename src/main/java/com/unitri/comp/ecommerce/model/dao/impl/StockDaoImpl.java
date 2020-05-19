@@ -1,64 +1,64 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
-import com.unitri.comp.ecommerce.model.dao.CartDao;
+import com.unitri.comp.ecommerce.model.dao.StockDao;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
-import com.unitri.comp.ecommerce.model.entity.Cart;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartDaoImpl implements CartDao {
+public class StockDaoImpl implements StockDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public CartDaoImpl() {
+    public StockDaoImpl() {
     }
 
     @Override
-    public Cart findById(Long id){
+    public Stock findById(Long id){
 
-        Cart cart = null;
+        Stock stock = null;
 
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select *from cart where id = "+id);
 
             while(resultSet.next()) {
-                cart = new Cart(resultSet.getInt("id"),
-                        resultSet.getInt("client_id"));
+                stock = new Stock(resultSet.getInt("id"),
+                        resultSet.getInt("product_id"));
             }
             statement.close();
-           return cart;
+           return stock;
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return cart;
+        return stock;
     }
 
     @Override
-    public Cart findByClientId(Cart cart) {
+    public Stock findByClientId(Stock stock) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select *from cart where client_id = "+cart.getClientId());
+            ResultSet resultSet = statement.executeQuery("select *from stock where client_id = "+stock.getClientId());
             while(resultSet.next()) {
-                cart = new Cart(resultSet.getInt("id"),
-                        resultSet.getInt("client_id"));
+                stock = new Stock(resultSet.getInt("id"),
+                        resultSet.getInt("product_id"));
             }
             statement.close();
-            return cart;
+            return stock;
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return cart;
+        return stock;
     }
 
     @Override
-    public void create(Cart cart) {
+    public void create(Stock stock) {
 
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into cart values(?,?)");
-            statement.setInt(1, cart.getId());
-            statement.setInt(2, cart.getClientId());
+            PreparedStatement statement = connection.prepareStatement("insert into stock values(?,?)");
+            statement.setInt(1, stock.getId());
+            statement.setInt(2, stock.getClientId());
             statement.execute();
             statement.close();
         }catch (SQLException e){
@@ -70,7 +70,7 @@ public class CartDaoImpl implements CartDao {
     public void deleteById(int id) {
 
         try {
-            PreparedStatement statement = connection.prepareStatement("delete from cart where id=?");
+            PreparedStatement statement = connection.prepareStatement("delete from stock where id=?");
             statement.setInt(1, id);
             statement.execute();
             statement.close();
@@ -80,21 +80,21 @@ public class CartDaoImpl implements CartDao {
     }
 
     @Override
-    public List<Cart> findAll() {
+    public List<stock> findAll() {
 
-        List<Cart> carts = new ArrayList<>();
+        List<Stock> stock = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select *from cart");
+            ResultSet resultSet = statement.executeQuery("select *from Stock");
             while (resultSet.next()){
-                Cart cart = new Cart(resultSet.getInt("id"), resultSet.getInt("client_id"));
-                 carts.add(cart);
+                Stock stock = new Stock(resultSet.getInt("id"), resultSet.getInt("product_id"));
+                 carts.add(stock);
             }
             statement.close();
-            return carts;
+            return stock;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return carts;
+        return stock;
     }
 }

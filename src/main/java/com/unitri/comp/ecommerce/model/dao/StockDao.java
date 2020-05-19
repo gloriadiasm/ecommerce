@@ -1,10 +1,8 @@
 package com.unitri.comp.ecommerce.model.dao;
 
-import com.unitri.comp.ecommerce.model.entity.Cart;
-
 import java.util.List;
 
-public interface CartDao{
+public interface StockDao {
 
     Cart findById(Long id);
     Cart findByClientId(Cart cart);

@@ -1,7 +1,5 @@
 package com.unitri.comp.ecommerce.model.dao;
 
-import com.unitri.comp.ecommerce.model.entity.OrderItems;
-
 import java.util.List;
 
 public interface OrderItemsDao {
