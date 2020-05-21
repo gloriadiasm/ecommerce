@@ -11,6 +11,7 @@ import java.util.List;
 public class CategoryDaoImpl implements CategoryDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
+    private Category category;
 
     public CategoryDaoImpl() {
     }
@@ -25,9 +26,9 @@ public class CategoryDaoImpl implements CategoryDao {
             ResultSet resultSet = statement.executeQuery("select *from category where id = "+id);
 
             while(resultSet.next()) {
-                category = new Category(resultSet.getInt("id"),
+                category = new Category(resultSet.getLong("id"),
                         resultSet.getString("nome"),
-                        resultSet.getObject("description"));
+                        resultSet.getString("description"));
             }
             statement.close();
             return category;
@@ -43,7 +44,6 @@ public class CategoryDaoImpl implements CategoryDao {
         try {
             PreparedStatement statement = connection.prepareStatement("insert into category values(?,?,?)");
             statement.setInt(1, category.getId());
-            statement.setString(2, category.getNome());
             statement.setString(3, category.getDescription());
             statement.execute();
             statement.close();
@@ -53,13 +53,10 @@ public class CategoryDaoImpl implements CategoryDao {
 
     }
 
-    @Override
-    public Category update(Category category) {
-        return null;
-    }
 
     @Override
-    public Category update(Category cartItems) {
+    public Category update(Category category) {
+        this.category = category;
         return null;
     }
 

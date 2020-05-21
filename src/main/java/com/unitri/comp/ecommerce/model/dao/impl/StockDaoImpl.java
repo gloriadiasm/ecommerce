@@ -1,6 +1,7 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.StockDao;
+import com.unitri.comp.ecommerce.model.entity.Stock;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
 import java.sql.*;
@@ -38,21 +39,9 @@ public class StockDaoImpl implements StockDao {
 
     @Override
     public Stock findByClientId(Stock stock) {
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select *from stock where product_id = "+stock.getProductId());
-            while(resultSet.next()) {
-                stock = new Stock(resultSet.getInt("id"),
-                        resultSet.getInt("quantity"),
-                        resultSet.getInt("product_id"));
-            }
-            statement.close();
-            return stock;
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return stock;
+        return null;
     }
+
 
     @Override
     public void create(Stock stock) {
@@ -60,8 +49,7 @@ public class StockDaoImpl implements StockDao {
         try {
             PreparedStatement statement = connection.prepareStatement("insert into stock values(?,?)");
             statement.setInt(1, stock.getId());
-            statement.setInt(2, stock.getQuabtity());
-            statement.setInt(3, stock.getProductId());
+            statement.setInt(2, stock.getQuantity());
             statement.execute();
             statement.close();
         }catch (SQLException e){
@@ -83,7 +71,7 @@ public class StockDaoImpl implements StockDao {
     }
 
     @Override
-    public List<stock> findAll() {
+    public List<Stock> findAll() {
 
         List<Stock> stocks = new ArrayList<>();
         try {

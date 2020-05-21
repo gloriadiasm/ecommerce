@@ -7,9 +7,13 @@ import java.util.List;
 public interface CategoryDao {
 
 
+    Category findById(Long id);
+
     static void create(Category category) {
     }
 
+
+    void create(Category category);
 
     Category update(Category cartItems);
 
@@ -17,7 +21,11 @@ public interface CategoryDao {
 
     }
 
+    void deleteById(int id);
+
     static List<Category> findAll() {
         return null;
     }
+
+    List<Category> findAll();
 }

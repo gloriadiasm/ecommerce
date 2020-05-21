@@ -10,7 +10,10 @@ public class Stock {
         this.productId = productId;
         this.quantity = quantity;
     }
-    public Stock() {
+    public Stock(int id, int quantity, int product_id) {
+    }
+
+    public Stock(int quantity, int product_id) {
     }
 
     public int getQuantity() {
@@ -29,11 +32,20 @@ public class Stock {
         this.productId = product_id;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void getProductId() {
+    }
+
+    public static void getInt(String id) {
+    }
+
+    public void add(Stock stock) {
     }
 }

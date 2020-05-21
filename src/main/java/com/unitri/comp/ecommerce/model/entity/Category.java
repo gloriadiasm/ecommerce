@@ -11,7 +11,7 @@ public class Category {
         this.description= description;;
     }
 
-    public Category() {
+    public Category(int id, String nome, Object description) {
     }
 
     public String getDescription() {
@@ -30,11 +30,17 @@ public class Category {
         this.name = name;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void getNome() {
+    }
+
+    public void add(Category category) {
     }
 }
