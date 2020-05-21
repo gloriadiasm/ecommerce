@@ -16,10 +16,8 @@ public interface StockDao {
     static void deleteById(int id) {
     }
 
-    void deleteById(int id);
 
     static void findAll() {
     }
 
-    List<Stock> findAll();
 }

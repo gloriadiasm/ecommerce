@@ -13,15 +13,12 @@ public interface CategoryDao {
     }
 
 
-    void create(Category category);
-
     Category update(Category cartItems);
 
     static void deleteById(int id) {
 
     }
 
-    void deleteById(int id);
 
     static List<Category> findAll() {
         return null;
