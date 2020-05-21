@@ -8,6 +8,7 @@ import java.util.List;
 public interface ProductDao {
     Product findById(Long id) throws SQLException;
     void create(Product product) throws SQLException;
+    void update(Product product) throws SQLException;
     void deleteById(Long id) throws SQLException;
     List<Product> findAll() throws SQLException;
 }

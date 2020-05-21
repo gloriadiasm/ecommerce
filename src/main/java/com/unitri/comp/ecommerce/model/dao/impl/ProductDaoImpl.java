@@ -57,6 +57,25 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
+    public void update(Product product) throws SQLException {
+        String sql = "update product set name=?, price=?, size=?, category_id=? where id=?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, product.getName());
+            statement.setFloat(2, product.getPrice());
+            statement.setString(3, product.getSize());
+            statement.setLong(4, product.getCategory_id());
+            statement.setLong(5, product.getId());
+
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }
+    }
+
+    @Override
     public void deleteById(Long id) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement("delete from product where id=?");

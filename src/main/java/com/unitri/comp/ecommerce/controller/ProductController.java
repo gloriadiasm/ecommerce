@@ -26,6 +26,11 @@ public class ProductController {
         productService.create(product);
     }
 
+    @PutMapping("/update")
+    public void update(@RequestBody Product product) throws SQLException {
+        productService.update(product);
+    }
+
     @DeleteMapping("/{id}")
     void deleteById(@PathVariable Long id) throws SQLException {
         productService.deleteById(id);

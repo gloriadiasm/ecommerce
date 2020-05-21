@@ -20,6 +20,10 @@ public class ProductService {
         productDao.create(product);
     }
 
+    public void update(Product product) throws SQLException {
+        productDao.update(product);
+    }
+
     public void deleteById(Long id) throws SQLException {
         productDao.deleteById(id);
     }

@@ -26,6 +26,11 @@ public class SupplierController {
         supplierService.create(supplier);
     }
 
+    @PutMapping("/update")
+    void update(@RequestBody Supplier supplier) throws SQLException {
+        supplierService.update(supplier);
+    }
+
     @DeleteMapping("/{id}")
     void deleteById(@PathVariable Long id) throws SQLException {
         supplierService.deleteById(id);

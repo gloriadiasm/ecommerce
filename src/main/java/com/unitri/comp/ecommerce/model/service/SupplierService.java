@@ -20,6 +20,10 @@ public class SupplierService {
         supplierDao.create(supplier);
     }
 
+    public void update(Supplier supplier) throws SQLException {
+        supplierDao.update(supplier);
+    }
+
     public void deleteById(Long id) throws SQLException {
         supplierDao.deleteByid(id);
     }

@@ -50,6 +50,23 @@ public class SupplierDaoImpl implements SupplierDao {
     }
 
     @Override
+    public void update(Supplier supplier) throws SQLException {
+        String sql = "update supplier set name=?, address_id=? where id=?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, supplier.getName());
+            statement.setLong(2, supplier.getAddress());
+            statement.setLong(3, supplier.getId());
+
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void deleteByid(Long id) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement("delete from supplier where id=?");
