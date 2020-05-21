@@ -3,17 +3,20 @@ package com.unitri.comp.ecommerce.model.service;
 
 
 import com.unitri.comp.ecommerce.model.dao.CategoryDao;
+import com.unitri.comp.ecommerce.model.dao.impl.CategoryDaoImpl;
+import com.unitri.comp.ecommerce.model.entity.Category;
 
 import java.util.List;
 
 public class CategoryService {
-    final CategoryDao categoryDao = new CategoryDaoImpl();
+    final CategoryDao categoryDao = new CategoryDao() {
+        @Override
+        public Category update(Category cartItems) {
+            return null;
+        }
+    };
 
     public CategoryService() {
-    }
-
-    public Category findById(Long id) {
-        return CategoryDao.findById(id);
     }
 
     public void create(Category category) {

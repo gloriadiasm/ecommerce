@@ -1,5 +1,9 @@
 package com.unitri.comp.ecommerce.model.service;
 
+import com.unitri.comp.ecommerce.model.dao.StockDao;
+import com.unitri.comp.ecommerce.model.dao.impl.StockDaoImpl;
+import com.unitri.comp.ecommerce.model.entity.Stock;
+
 import java.util.List;
 
 public class StockService {
@@ -9,19 +13,7 @@ public class StockService {
         public StockService() {
         }
 
-        public  Stock findById(Long id) {
-            return StockDao.findById(id);
-        }
-
-        public void create(Stock stock) {
-            StockDao.create(cart);
-        }
-
-        public void deleteById(int id) {
-            StockDao.deleteById(id);
-        }
-
-        public List<Stock> findAll() {
+    public List<Stock> findAll() {
             return StockDao.findAll();
         }
 }

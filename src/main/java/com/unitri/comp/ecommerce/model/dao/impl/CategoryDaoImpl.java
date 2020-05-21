@@ -1,5 +1,7 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
+import com.unitri.comp.ecommerce.model.dao.CategoryDao;
+import com.unitri.comp.ecommerce.model.entity.Category;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
 import java.sql.*;
@@ -53,6 +55,11 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public Category update(Category category) {
+        return null;
+    }
+
+    @Override
+    public Category update(Category cartItems) {
         return null;
     }
 
