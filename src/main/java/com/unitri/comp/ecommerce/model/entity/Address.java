@@ -1,7 +1,7 @@
 package com.unitri.comp.ecommerce.model.entity;
 
 public class Address {
-    private int id;
+    private Long id;
     private String street;
     private String district;
     private String state;
@@ -9,15 +9,21 @@ public class Address {
     private int number;
     private String zipCode;
 
-    public Address(int id) {
+    public Address(Long id, String street, String district, String state, String city, int number, String zipCode) {
         this.id = id;
+        this.street = street;
+        this.district = district;
+        this.state = state;
+        this.city = city;
+        this.number = number;
+        this.zipCode = zipCode;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

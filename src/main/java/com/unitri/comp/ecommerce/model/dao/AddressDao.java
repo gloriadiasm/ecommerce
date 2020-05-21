@@ -7,11 +7,9 @@ import java.util.List;
 
 public interface AddressDao {
 
-    Address findById(int id) throws SQLException;
-    Address findAddress(Address address) throws SQLException;
-    Address create(Address address) throws SQLException;
-    Address update(Address address) throws SQLException;
-    void delete(Address address) throws SQLException;
-    void deleteById() throws SQLException;
-    List<Address> findAll() throws SQLException;
+    Address findById(Long id);
+    void create(Address address);
+    Address update(Address address);
+    void deleteById(Long id);
+    List<Address> findAll();
 }

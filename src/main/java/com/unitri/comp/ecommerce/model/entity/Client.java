@@ -1,27 +1,31 @@
 package com.unitri.comp.ecommerce.model.entity;
 
 public class Client {
-    private int id;
+    private Long id;
     private String name;
     private String phoneNumber;
     private String email;
-    private int addressId;
+    private Long addressId;
     private double shippingCost;
-    private int cartId;
-    private int ordersId;
+    private Long cartId;
+    private Long ordersId;
 
-    public Client(int id, int addressId, int cartId, int ordersId) {
+    public Client(Long id, String name, String phoneNumber, String email, Long addressId, double shippingCost, Long cartId, Long ordersId) {
         this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
         this.addressId = addressId;
+        this.shippingCost = shippingCost;
         this.cartId = cartId;
         this.ordersId = ordersId;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,11 +53,11 @@ public class Client {
         this.email = email;
     }
 
-    public int getAddressId() {
+    public Long getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(int addressId) {
+    public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
 
@@ -65,19 +69,19 @@ public class Client {
         this.shippingCost = shippingCost;
     }
 
-    public int getCartId() {
+    public Long getCartId() {
         return cartId;
     }
 
-    public void setCartId(int cartId) {
+    public void setCartId(Long cartId) {
         this.cartId = cartId;
     }
 
-    public int getOrdersId() {
+    public Long getOrdersId() {
         return ordersId;
     }
 
-    public void setOrdersId(int ordersId) {
+    public void setOrdersId(Long ordersId) {
         this.ordersId = ordersId;
     }
 }

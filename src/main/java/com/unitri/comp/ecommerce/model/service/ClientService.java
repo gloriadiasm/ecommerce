@@ -3,17 +3,29 @@ package com.unitri.comp.ecommerce.model.service;
 import com.unitri.comp.ecommerce.model.dao.impl.ClientDaoImpl;
 import com.unitri.comp.ecommerce.model.entity.Client;
 
-import java.sql.SQLException;
+import java.util.List;
 
 public class ClientService {
 
-    ClientDaoImpl clientDao;
+    final ClientDaoImpl clientDao = new ClientDaoImpl();
 
-    public ClientService() throws SQLException{
-        this.clientDao = new ClientDaoImpl();
+    public ClientService(){
+
     }
 
-    public Client findById(int id) throws SQLException{
+    public Client findById(Long id) {
         return clientDao.findById(id);
+    }
+
+    public void create (Client client){
+        clientDao.create(client);
+    }
+
+    public void deleteById (Long id){
+        clientDao.deleteById(id);
+    }
+
+    public List<Client> findAll() {
+        return clientDao.findAll();
     }
 }

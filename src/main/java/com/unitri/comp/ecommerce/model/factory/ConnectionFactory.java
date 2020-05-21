@@ -9,7 +9,7 @@ public class ConnectionFactory {
     public Connection getConnection() {
         try {
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/ecommerce", "root", "root1234");
+                    "jdbc:mysql://localhost:3306/ecommerce?useTimezone=true&serverTimezone=UTC", "root", "Amanda123");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
