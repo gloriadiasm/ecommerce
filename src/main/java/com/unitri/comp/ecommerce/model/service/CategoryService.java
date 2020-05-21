@@ -11,7 +11,17 @@ import java.util.List;
 public class CategoryService {
     final CategoryDao categoryDao = new CategoryDao() {
         @Override
+        public Category findById(Long id) {
+            return null;
+        }
+
+        @Override
         public Category update(Category cartItems) {
+            return null;
+        }
+
+        @Override
+        public List<Category> findAll() {
             return null;
         }
     };

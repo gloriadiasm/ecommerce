@@ -17,7 +17,8 @@ public interface StockDao {
     }
 
 
-    static void findAll() {
+    static List<Stock> findAll() {
+        return null;
     }
 
 }
