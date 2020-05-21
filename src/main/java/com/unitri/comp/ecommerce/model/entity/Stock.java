@@ -32,7 +32,7 @@ public class Stock {
         this.productId = product_id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
