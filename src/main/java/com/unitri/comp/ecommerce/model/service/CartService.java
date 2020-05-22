@@ -4,13 +4,14 @@ import com.unitri.comp.ecommerce.model.dao.CartDao;
 import com.unitri.comp.ecommerce.model.dao.impl.CartDaoImpl;
 import com.unitri.comp.ecommerce.model.entity.Cart;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class CartService{
 
     final CartDao cartDao = new CartDaoImpl();
 
-    public CartService() {
+    public CartService() throws SQLException {
     }
 
     public Cart findById(Long id) {

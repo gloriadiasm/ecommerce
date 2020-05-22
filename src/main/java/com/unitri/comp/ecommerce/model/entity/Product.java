@@ -1,17 +1,27 @@
 package com.unitri.comp.ecommerce.model.entity;
 
 public class Product {
-    private Long id;
+    private int id;
     private String name;
-    private Float price;
+    private double price;
     private String size;
-    private Long category_id;
+    private int category;
+    private int supplier;
 
-    public Long getId() {
+    public Product(int id, String name, double price, String size, int category, int supplier) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.size = size;
+        this.category = category;
+        this.supplier = supplier;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -23,11 +33,11 @@ public class Product {
         this.name = name;
     }
 
-    public Float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -39,30 +49,19 @@ public class Product {
         this.size = size;
     }
 
-    public Long getCategory_id() {
-        return category_id;
+    public int getCategory() {
+        return category;
     }
 
-    public void setCategory_id(Long category_id) {
-        this.category_id = category_id;
+    public void setCategory(int category) {
+        this.category = category;
     }
 
-    public Long getSupplier_id() {
-        return supplier_id;
+    public int getSupplier() {
+        return supplier;
     }
 
-    public void setSupplier_id(Long supplier_id) {
-        this.supplier_id = supplier_id;
-    }
-
-    private Long supplier_id;
-
-    public Product(Long id, String name, Float price, String size, Long category_id, Long supplier_id) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.size = size;
-        this.category_id = category_id;
-        this.supplier_id = supplier_id;
+    public void setSupplier(int supplier) {
+        this.supplier = supplier;
     }
 }

@@ -1,8 +1,8 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
-import com.unitri.comp.ecommerce.model.dao.ConnectionFactory;
 import com.unitri.comp.ecommerce.model.dao.SupplierDao;
 import com.unitri.comp.ecommerce.model.entity.Supplier;
+import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;

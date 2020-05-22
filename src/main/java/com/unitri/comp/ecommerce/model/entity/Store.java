@@ -4,24 +4,20 @@ public class Store {
 
     private int id;
     private String name;
-    private Long cnpj;
-    private String addresses;
-    private int sold_id;
-    private int stock_id;
+    private int cnpj;
+    private int address;
 
-    public Store(int id, String name, Long cnpj, String addresses, int sold_id, int stock_id) {
+    public Store(int id, String name, int cnpj, int address) {
         this.id = id;
         this.name = name;
         this.cnpj = cnpj;
-        this.addresses = addresses;
-        this.sold_id = sold_id;
-        this.stock_id = stock_id;
+        this.address = address;
     }
-
 
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -34,36 +30,19 @@ public class Store {
         this.name = name;
     }
 
-    public Long getCnpj() {
+    public int getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(Long cnpj) {
+    public void setCnpj(int cnpj) {
         this.cnpj = cnpj;
     }
 
-    public String getAddresses() {
-        return addresses;
+    public int getAddress() {
+        return address;
     }
 
-    public void setAddresses(String addresses) {
-        this.addresses = addresses;
+    public void setAddress(int address) {
+        this.address = address;
     }
-
-    public int getSold_id() {
-        return sold_id;
-    }
-
-    public void setSold_id(int sold_id) {
-        this.sold_id = sold_id;
-    }
-
-    public int getStock_id() {
-        return stock_id;
-    }
-
-    public void setStock_id(int stock_id) {
-        this.stock_id = stock_id;
-    }
-
 }

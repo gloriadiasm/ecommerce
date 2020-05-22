@@ -7,10 +7,16 @@ public class Address {
     private String state;
     private String city;
     private int number;
-    private String zipCode;
+    private String zip_code;
 
-    public Address(int id) {
+    public Address(int id, String street, String district, String state, String city, int number, String zip_code) {
         this.id = id;
+        this.street = street;
+        this.district = district;
+        this.state = state;
+        this.city = city;
+        this.number = number;
+        this.zip_code = zip_code;
     }
 
     public int getId() {
@@ -61,11 +67,11 @@ public class Address {
         this.number = number;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getZip_code() {
+        return zip_code;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setZip_code(String zip_code) {
+        this.zip_code = zip_code;
     }
 }

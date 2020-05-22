@@ -4,6 +4,7 @@ import com.unitri.comp.ecommerce.model.entity.CartItems;
 import com.unitri.comp.ecommerce.model.service.CartItemsService;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -12,7 +13,7 @@ public class CartItemsController {
 
     final CartItemsService cartItemsService;
 
-    CartItemsController() {
+    CartItemsController() throws SQLException {
         this.cartItemsService = new CartItemsService();
     }
 

@@ -4,6 +4,7 @@ import com.unitri.comp.ecommerce.model.entity.Order;
 import com.unitri.comp.ecommerce.model.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -12,7 +13,7 @@ public class OrderController {
 
     final OrderService orderService;
 
-    OrderController() {
+    OrderController() throws SQLException {
         this.orderService = new OrderService();
     }
 

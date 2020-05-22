@@ -13,7 +13,7 @@ public class OrderDaoImpl implements OrderDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public OrderDaoImpl() {
+    public OrderDaoImpl() throws SQLException {
     }
 
     @Override

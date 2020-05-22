@@ -1,8 +1,9 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.ClientDao;
-import com.unitri.comp.ecommerce.model.dao.ConnectionFactory;
+import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.entity.Client;
+import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,12 +24,15 @@ public class ClientDaoImpl implements ClientDao {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from ecommerce.address where id = "+id);
+            ResultSet resultSet = statement.executeQuery("select * from client where id = "+id);
             while (resultSet.next()){
                 client = new Client(resultSet.getInt("id"),
-                        resultSet.getInt("address_id"),
-                        resultSet.getInt("cart_id"),
-                        resultSet.getInt("orders_id"));
+                        resultSet.getString("name"),
+                        resultSet.getString("phone_number"),
+                        resultSet.getString("email"),
+                        resultSet.getObject("address", Class<Address>),
+                        resultSet.getObject("cart"),
+                        resultSet.getBigDecimal("shipping"))
             }
             resultSet.close();
             return client;

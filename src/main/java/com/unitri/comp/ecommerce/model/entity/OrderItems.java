@@ -3,15 +3,15 @@ package com.unitri.comp.ecommerce.model.entity;
 public class OrderItems {
 
     private int id;
-    private int order_id;
-    private int product_id;
-    private Long price;
+    private int client_order;
+    private int product;
+    private double price;
     private int quantity;
 
-    public OrderItems(int id, int order_id, int product_id, Long price, int quantity) {
+    public OrderItems(int id, int client_order, int product, double price, int quantity) {
         this.id = id;
-        this.order_id = order_id;
-        this.product_id = product_id;
+        this.client_order = client_order;
+        this.product = product;
         this.price = price;
         this.quantity = quantity;
     }
@@ -24,27 +24,27 @@ public class OrderItems {
         this.id = id;
     }
 
-    public int getOrder_id() {
-        return order_id;
+    public int getClient_order() {
+        return client_order;
     }
 
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
+    public void setClient_order(int client_order) {
+        this.client_order = client_order;
     }
 
-    public int getProduct_id() {
-        return product_id;
+    public int getProduct() {
+        return product;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProduct(int product) {
+        this.product = product;
     }
 
-    public Long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

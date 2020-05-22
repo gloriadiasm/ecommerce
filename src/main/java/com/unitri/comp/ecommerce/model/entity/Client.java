@@ -3,18 +3,20 @@ package com.unitri.comp.ecommerce.model.entity;
 public class Client {
     private int id;
     private String name;
-    private String phoneNumber;
+    private String phone_number;
     private String email;
-    private int addressId;
-    private double shippingCost;
-    private int cartId;
-    private int ordersId;
+    private int address;
+    private double shipping;
+    private int cart;
 
-    public Client(int id, int addressId, int cartId, int ordersId) {
+    public Client(int id, String name, String phone_number, String email, int address, double shipping, int cart) {
         this.id = id;
-        this.addressId = addressId;
-        this.cartId = cartId;
-        this.ordersId = ordersId;
+        this.name = name;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.address = address;
+        this.shipping = shipping;
+        this.cart = cart;
     }
 
     public int getId() {
@@ -25,20 +27,20 @@ public class Client {
         this.id = id;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getEmail() {
@@ -49,36 +51,28 @@ public class Client {
         this.email = email;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public int getAddress() {
+        return address;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setAddress(int address) {
+        this.address = address;
     }
 
-    public double getShippingCost() {
-        return shippingCost;
+    public double getShipping() {
+        return shipping;
     }
 
-    public void setShippingCost(double shippingCost) {
-        this.shippingCost = shippingCost;
+    public void setShipping(double shipping) {
+        this.shipping = shipping;
     }
 
-    public int getCartId() {
-        return cartId;
+    public int getCart() {
+        return cart;
     }
 
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
-    }
-
-    public int getOrdersId() {
-        return ordersId;
-    }
-
-    public void setOrdersId(int ordersId) {
-        this.ordersId = ordersId;
+    public void setCart(int cart) {
+        this.cart = cart;
     }
 }
 

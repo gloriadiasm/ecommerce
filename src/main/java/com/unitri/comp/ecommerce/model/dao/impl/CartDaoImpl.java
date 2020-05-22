@@ -11,7 +11,7 @@ public class CartDaoImpl implements CartDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public CartDaoImpl() {
+    public CartDaoImpl() throws SQLException {
     }
 
     @Override
@@ -24,8 +24,7 @@ public class CartDaoImpl implements CartDao {
             ResultSet resultSet = statement.executeQuery("select *from cart where id = "+id);
 
             while(resultSet.next()) {
-                cart = new Cart(resultSet.getInt("id"),
-                        resultSet.getInt("client_id"));
+                cart = new Cart(resultSet.getInt("id"));
             }
             statement.close();
            return cart;
@@ -35,30 +34,13 @@ public class CartDaoImpl implements CartDao {
         return cart;
     }
 
-    @Override
-    public Cart findByClientId(Cart cart) {
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select *from cart where client_id = "+cart.getClientId());
-            while(resultSet.next()) {
-                cart = new Cart(resultSet.getInt("id"),
-                        resultSet.getInt("client_id"));
-            }
-            statement.close();
-            return cart;
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return cart;
-    }
 
     @Override
     public void create(Cart cart) {
 
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into cart values(?,?)");
+            PreparedStatement statement = connection.prepareStatement("insert into cart values(?)");
             statement.setInt(1, cart.getId());
-            statement.setInt(2, cart.getClientId());
             statement.execute();
             statement.close();
         }catch (SQLException e){
@@ -87,7 +69,7 @@ public class CartDaoImpl implements CartDao {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select *from cart");
             while (resultSet.next()){
-                Cart cart = new Cart(resultSet.getInt("id"), resultSet.getInt("client_id"));
+                Cart cart = new Cart(resultSet.getInt("id"));
                  carts.add(cart);
             }
             statement.close();

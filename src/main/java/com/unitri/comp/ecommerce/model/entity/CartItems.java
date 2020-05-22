@@ -3,16 +3,16 @@ package com.unitri.comp.ecommerce.model.entity;
 public class CartItems {
 
     private int id;
-    private int cart_id;
-    private int product_id;
-    private Long totalPrice;
+    private int cart;
+    private int product;
+    private double total_price;
     private int quantity;
 
-    public CartItems(int id, int cart_id, int product_id, Long totalPrice, int quantity) {
+    public CartItems(int id, int cart, int product, double total_price, int quantity) {
         this.id = id;
-        this.cart_id = cart_id;
-        this.product_id = product_id;
-        this.totalPrice = totalPrice;
+        this.cart = cart;
+        this.product = product;
+        this.total_price = total_price;
         this.quantity = quantity;
     }
 
@@ -24,28 +24,28 @@ public class CartItems {
         this.id = id;
     }
 
-    public int getCart_id() {
-        return cart_id;
+    public int getCart() {
+        return cart;
     }
 
-    public void setCart_id(int cart_id) {
-        this.cart_id = cart_id;
+    public void setCart(int cart) {
+        this.cart = cart;
     }
 
-    public int getProduct_id() {
-        return product_id;
+    public int getProduct() {
+        return product;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProduct(int product) {
+        this.product = product;
     }
 
-    public Long getTotalPrice() {
-        return totalPrice;
+    public double getTotal_price() {
+        return total_price;
     }
 
-    public void setTotalPrice(Long totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotal_price(double total_price) {
+        this.total_price = total_price;
     }
 
     public int getQuantity() {

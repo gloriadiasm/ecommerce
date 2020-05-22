@@ -5,12 +5,12 @@ import com.unitri.comp.ecommerce.model.enums.OrderStatusEnum;
 public class Order {
 
     private int id;
-    private int clientId;
+    private int client;
     private OrderStatusEnum status;
 
-    public Order(int id, int clientId, OrderStatusEnum status) {
+    public Order(int id, int client, OrderStatusEnum status) {
         this.id = id;
-        this.clientId = clientId;
+        this.client = client;
         this.status = status;
     }
 
@@ -22,12 +22,12 @@ public class Order {
         this.id = id;
     }
 
-    public int getClientId() {
-        return clientId;
+    public int getClient() {
+        return client;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setClient(int client) {
+        this.client = client;
     }
 
     public OrderStatusEnum getStatus() {

@@ -12,7 +12,7 @@ public class CartItemsDaoImpl implements CartItemsDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public CartItemsDaoImpl() {
+    public CartItemsDaoImpl() throws SQLException {
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.unitri.comp.ecommerce.model.service.CartService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -13,7 +14,7 @@ public class CartController {
 
     final CartService cartService;
 
-    CartController() {
+    CartController() throws SQLException {
         this.cartService = new CartService();
     }
 
