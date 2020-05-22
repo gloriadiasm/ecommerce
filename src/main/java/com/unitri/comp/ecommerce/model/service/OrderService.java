@@ -14,19 +14,19 @@ public class OrderService {
     public OrderService() throws SQLException {
     }
 
-    public Order findById(Long id) {
+    public Order findById(int id) throws SQLException {
         return orderDao.findById(id);
     }
 
-    public void create(Order order) {
+    public void create(Order order) throws SQLException {
         orderDao.create(order);
     }
 
-    public void deleteById(int id) {
+    public void deleteById(int id) throws SQLException {
         orderDao.deleteById(id);
     }
 
-    public List<Order> findAll() {
+    public List<Order> findAll() throws SQLException {
         return orderDao.findAll();
     }
 }

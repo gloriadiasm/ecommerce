@@ -12,7 +12,7 @@ public class ProductService {
 
     public ProductService() throws SQLException {}
 
-    public Product findById(Long id) throws SQLException {
+    public Product findById(int id) throws SQLException {
        return productDao.findById(id);
     }
 
@@ -20,7 +20,7 @@ public class ProductService {
         productDao.create(product);
     }
 
-    public void deleteById(Long id) throws SQLException {
+    public void deleteById(int id) throws SQLException {
         productDao.deleteById(id);
     }
 

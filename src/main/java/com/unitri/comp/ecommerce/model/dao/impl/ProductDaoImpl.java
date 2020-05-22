@@ -1,6 +1,7 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.ProductDao;
+import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.entity.Product;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
@@ -14,19 +15,19 @@ public class ProductDaoImpl implements ProductDao {
     public ProductDaoImpl() throws SQLException {}
 
     @Override
-    public Product findById(Long id) throws SQLException {
+    public Product findById(int id) throws SQLException {
         Product product = null;
 
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from ecommerce.product where id ="+id);
             while(resultSet.next()) {
-                product = new Product(resultSet.getLong("id"),
+                product = new Product(resultSet.getInt("id"),
                                       resultSet.getString("name"),
                                       resultSet.getFloat("price"),
                                       resultSet.getString("size"),
-                                      resultSet.getLong("category_id"),
-                                      resultSet.getLong("supplier_id")
+                                      resultSet.getInt("category"),
+                                      resultSet.getInt("supplier")
                         );
             }
             resultSet.close();
@@ -40,32 +41,39 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void create(Product product) {
+    public Product create(Product product) {
         try {
             PreparedStatement statement = connection.prepareStatement("insert into product values (?, ?, ?, ?, ?, ?)");
-            statement.setLong(1, product.getId());
+            statement.setInt(1, product.getId());
             statement.setString(2, product.getName());
-            statement.setFloat(3, product.getPrice());
+            statement.setDouble(3, product.getPrice());
             statement.setString(4, product.getSize());
-            statement.setLong(5, product.getCategory_id());
-            statement.setLong(6, product.getSupplier_id());
+            statement.setInt(5, product.getCategory());
+            statement.setInt(6, product.getSupplier());
             statement.execute();
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return product;
     }
 
     @Override
-    public void deleteById(Long id) throws SQLException {
+    public Product update(Product address) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Address deleteById(int id) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement("delete from product where id=?");
-            statement.setLong(1, id);
+            statement.setInt(1, id);
             statement.execute();
             statement.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     @Override
@@ -76,12 +84,12 @@ public class ProductDaoImpl implements ProductDao {
             String sql = "select * from `product`";
             ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()) {
-                Product product = new Product(resultSet.getLong("id"),
+                Product product = new Product(resultSet.getInt("id"),
                                               resultSet.getString("name"),
-                                              resultSet.getFloat("price"),
+                                              resultSet.getDouble("price"),
                                               resultSet.getString("size"),
-                                              resultSet.getLong("category_id"),
-                                              resultSet.getLong("supplier_id"));
+                                              resultSet.getInt("category"),
+                                              resultSet.getInt("supplier"));
                 products.add(product);
             }
             statement.close();

@@ -14,23 +14,19 @@ public class CartService{
     public CartService() throws SQLException {
     }
 
-    public Cart findById(Long id) {
+    public Cart findById(int id) throws SQLException {
         return cartDao.findById(id);
     }
 
-    public Cart findByClientId(Cart cart) {
-        return cartDao.findByClientId(cart);
-    }
-
-    public void create(Cart cart) {
+    public void create(Cart cart) throws SQLException {
         cartDao.create(cart);
     }
 
-    public void deleteById(int id) {
+    public void deleteById(int id) throws SQLException {
         cartDao.deleteById(id);
     }
 
-    public List<Cart> findAll() {
+    public List<Cart> findAll() throws SQLException {
         return cartDao.findAll();
     }
 }

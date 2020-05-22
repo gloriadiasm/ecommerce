@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS address
+CREATE TABLE IF NOT EXISTS ecommerce.address
  (
   id INT NOT NULL AUTO_INCREMENT,
   street VARCHAR(45) NULL,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS address
   PRIMARY KEY (id)
   );
 
-CREATE TABLE IF NOT EXISTS category
+CREATE TABLE IF NOT EXISTS ecommerce.category
  (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(70) NULL,
@@ -18,16 +18,16 @@ CREATE TABLE IF NOT EXISTS category
   PRIMARY KEY (id)
  );
 
- CREATE TABLE IF NOT EXISTS supplier
+ CREATE TABLE IF NOT EXISTS ecommerce.supplier
  (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NULL,
   address INT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (address) REFERENCES address
+  FOREIGN KEY (address) REFERENCES ecommerce.address(id)
  );
 
-CREATE TABLE IF NOT EXISTS product
+CREATE TABLE IF NOT EXISTS ecommerce.product
  (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NULL,
@@ -36,29 +36,29 @@ CREATE TABLE IF NOT EXISTS product
   category INT NULL,
   supplier INT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (category) REFERENCES category,
-  FOREIGN KEY (supplier) REFERENCES supplier
+  FOREIGN KEY (category) REFERENCES category(id),
+  FOREIGN KEY (supplier) REFERENCES supplier(id)
   );
 
-CREATE TABLE IF NOT EXISTS cart
+CREATE TABLE IF NOT EXISTS ecommerce.cart
  (
   id INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY(id)
  );
 
-CREATE TABLE IF NOT EXISTS cartitems
+CREATE TABLE IF NOT EXISTS ecommerce.cartitems
  (
-    id INT NOT NULL AUTO_INCRIMENT,
+    id INT NOT NULL AUTO_INCREMENT,
     cart int,
     product int,
     total_price decimal(13,4),
     quantity int,
     PRIMARY KEY (id),
-    FOREIGN KEY (cart) REFERENCES cart,
-    FOREIGN KEY (product) REFERENCES product
+    FOREIGN KEY (cart) REFERENCES cart(id),
+    FOREIGN KEY (product) REFERENCES product(id)
  );
 
-CREATE TABLE IF NOT EXISTS client
+CREATE TABLE IF NOT EXISTS ecommerce.client
 (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NULL,
@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS client
   shipping DECIMAL(13,4) NULL,
   cart INT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (address) REFERENCES address,
-  FOREIGN KEY (cart) REFERENCES cart
+  FOREIGN KEY (address) REFERENCES address(id),
+  FOREIGN KEY (cart) REFERENCES cart(id)
   );
 
 CREATE TABLE IF NOT EXISTS ecommerce.order
@@ -78,48 +78,48 @@ CREATE TABLE IF NOT EXISTS ecommerce.order
   client int,
   status VARCHAR (300),
   PRIMARY KEY (id),
-  FOREIGN KEY (client) REFERENCES client
+  FOREIGN KEY (client) REFERENCES client(id)
  );
 
-CREATE TABLE IF NOT EXISTS orderitems
+CREATE TABLE IF NOT EXISTS ecommerce.orderitems
  (
-  id INT NOT NULL AUTO_INCRIMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   client_order int,
   product int,
   price decimal(13,4),
   quantity int,
   PRIMARY KEY (id),
-  FOREIGN KEY (client_order) ecommerce.order,
-  FOREIGN KEY (product) product
+  FOREIGN KEY (client_order) REFERENCES ecommerce.order(id),
+  FOREIGN KEY (product) REFERENCES product(id)
  );
 
-CREATE TABLE IF NOT EXISTS sold
+CREATE TABLE IF NOT EXISTS ecommerce.sold
  (
   id INT NOT NULL AUTO_INCREMENT,
   product int,
   quantity int,
   PRIMARY KEY (id),
-  FOREIGN KEY (product) references product
+  FOREIGN KEY (product) references product(id)
  );
 
-CREATE TABLE IF NOT EXISTS stock
+CREATE TABLE IF NOT EXISTS ecommerce.stock
  (
   id INT NOT NULL AUTO_INCREMENT,
   product int,
   quantity int,
   PRIMARY KEY (id),
-  FOREIGN KEY (product) references product
+  FOREIGN KEY (product) references product(id)
  );
 
-CREATE TABLE IF NOT EXISTS store
+CREATE TABLE IF NOT EXISTS ecommerce.store
  (
 
-    id INT NOT NULL AUTO_INCROMENT,
+    id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR (150),
-    cnpj int
+    cnpj int,
     address int,
     PRIMARY KEY (id),
-    FOREIGN KEY (address) REFERENCES address
- )
+    FOREIGN KEY (address) REFERENCES address(id)
+ );
 
 

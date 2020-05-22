@@ -1,10 +1,9 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
-
 import com.unitri.comp.ecommerce.model.dao.StoreDao;
+import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.entity.Store;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +28,8 @@ public class StoreDaoImpl implements StoreDao {
 
             store = new Store(resultSet.getInt("id"),
                               resultSet.getString("name"),
-                              resultSet.getLong("cnpj"),
-                              resultSet.getString("addresses"),
-                              resultSet.getInt("sold_id"),
-                              resultSet.getInt("stock_id"));
+                              resultSet.getInt("cnpj"),
+                              resultSet.getInt("address"));
 
             statement.close();
             return store;
@@ -45,51 +42,16 @@ public class StoreDaoImpl implements StoreDao {
     }
 
     @Override
-    public List<Store> findStore(String name) throws SQLException {
-        Store store = null;
-        List<Store> stores = new ArrayList<Store>();
-
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from store where name like '%"+name+"%';");
-
-            while(resultSet.next()) {
-                store = new Store(resultSet.getInt("id"),
-                                  resultSet.getString("name"),
-                                  resultSet.getLong("cnpj"),
-                                  resultSet.getString("addresses"),
-                                  resultSet.getInt("sold_id"),
-                                  resultSet.getInt("stock_id"));
-
-                stores.add(store);
-            }
-
-            statement.close();
-            return stores;
-        }catch (SQLException e){
-            e.printStackTrace();
-
-        } finally {
-            connection.close();
-
-        }
-        return stores;
-
-    }
-
-    @Override
     public Store create(Store store) throws SQLException {
 
         try {
             int id = store.getId();
             String name = store.getName();
-            Long cnpj = store.getCnpj();
-            String adds = store.getAddresses();
-            int sold = store.getSold_id();
-            int stock = store.getStock_id();
+            int cnpj = store.getCnpj();
+            int adds = store.getAddress();
 
-            String sql = "insert into store(id, name, cnpj, addresses, sold_id, stock_id) "+
-                    "values ("+id+",'"+name+"',"+cnpj+",'"+adds+"',"+sold+","+stock+");";
+            String sql = "insert into store(id, name, cnpj, address) "+
+                    "values ("+id+",'"+name+"',"+cnpj+",'"+adds+")";
 
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
@@ -112,15 +74,13 @@ public class StoreDaoImpl implements StoreDao {
 
         int id = store.getId();
         String name = store.getName();
-        Long cnpj = store.getCnpj();
-        String address = store.getAddresses();
-        int sold_id = store.getSold_id();
-        int stock = store.getStock_id();
+        int cnpj = store.getCnpj();
+        int address = store.getAddress();
 
         String sql ="update store set id_store ="+ id +
                     ", name='"+ name +"', cnpj="+ cnpj +
                     ", addresses='"+ address +
-                    "', sold_id= "+ sold_id +",stock_id="+ stock +";";
+                    "' +";
 
         try{
             Statement statement = connection.createStatement();
@@ -138,29 +98,7 @@ public class StoreDaoImpl implements StoreDao {
     }
 
     @Override
-    public void delete(Store store) throws SQLException {
-
-        int id = store.getId();
-
-        String sql = "delete from store where id_store = "+id;
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-
-
-            statement.close();
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
-        }
-
-
-    }
-
-
-    @Override
-    public void deleteById(int id) throws SQLException {
+    public Address deleteById(int id) throws SQLException {
         String sql = "delete from store where id_store="+id;
         try {
             Statement statement = connection.createStatement();
@@ -174,6 +112,7 @@ public class StoreDaoImpl implements StoreDao {
             this.connection.close();
         }
 
+        return null;
     }
 
     @Override
@@ -187,12 +126,10 @@ public class StoreDaoImpl implements StoreDao {
 
             while(resultSet.next()) {
 
-                Store store = new Store(resultSet.getInt("id_store"),
-                                        resultSet.getString("name"),
-                                        resultSet.getLong("cnpj"),
-                                        resultSet.getString("addresses"),
-                                        resultSet.getInt("sold_id"),
-                                        resultSet.getInt("stock_id"));
+                Store store = new Store(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("cnpj"),
+                        resultSet.getInt("address"));
 
                 stores.add(store);
             }

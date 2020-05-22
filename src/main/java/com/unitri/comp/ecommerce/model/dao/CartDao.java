@@ -2,12 +2,6 @@ package com.unitri.comp.ecommerce.model.dao;
 
 import com.unitri.comp.ecommerce.model.entity.Cart;
 
-import java.util.List;
+public interface CartDao extends GenericDao<Cart, Integer>{
 
-public interface CartDao{
-
-    Cart findById(Long id);
-    void create(Cart cart);
-    void deleteById(int id);
-    List<Cart> findAll();
 }

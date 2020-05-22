@@ -2,21 +2,21 @@ package com.unitri.comp.ecommerce.model.entity;
 
 public class Stock {
 
-    public Long id;
+    public int id;
     public int product;
     public int quantity;
 
-    public Stock(Long id, int product, int quantity) {
+    public Stock(int id, int product, int quantity) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

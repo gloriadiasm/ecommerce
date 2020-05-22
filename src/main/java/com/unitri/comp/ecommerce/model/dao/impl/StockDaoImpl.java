@@ -1,56 +1,60 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
-import com.unitri.comp.ecommerce.model.dao.CartDao;
+import com.unitri.comp.ecommerce.model.dao.StockDao;
 import com.unitri.comp.ecommerce.model.entity.Address;
+import com.unitri.comp.ecommerce.model.entity.Stock;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
-import com.unitri.comp.ecommerce.model.entity.Cart;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartDaoImpl implements CartDao {
+public class StockDaoImpl implements StockDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public CartDaoImpl() throws SQLException {
+    public StockDaoImpl() throws SQLException {
     }
 
     @Override
-    public Cart findById(int id) throws SQLException{
+    public Stock findById(int id){
 
-        Cart cart = null;
+        Stock stock = null;
 
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select *from cart where id = "+id);
 
             while(resultSet.next()) {
-                cart = new Cart(resultSet.getInt("id"));
+                stock = new Stock(resultSet.getInt("id"),
+                        resultSet.getInt("quantity"),
+                        resultSet.getInt("product"));
             }
             statement.close();
-           return cart;
+            return stock;
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return cart;
+        return stock;
     }
 
     @Override
-    public Cart create(Cart cart) {
+    public Stock create(Stock stock) {
 
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into cart values(?)");
-            statement.setInt(1, cart.getId());
+            PreparedStatement statement = connection.prepareStatement("insert into stock values(?,?)");
+            statement.setInt(1, stock.getId());
+            statement.setInt(2, stock.getQuantity());
             statement.execute();
             statement.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return cart;
+        return stock;
     }
 
     @Override
-    public Cart update(Cart address) throws SQLException {
+    public Stock update(Stock address) throws SQLException {
         return null;
     }
 
@@ -58,7 +62,7 @@ public class CartDaoImpl implements CartDao {
     public Address deleteById(int id) {
 
         try {
-            PreparedStatement statement = connection.prepareStatement("delete from cart where id=?");
+            PreparedStatement statement = connection.prepareStatement("delete from stock where id=?");
             statement.setInt(1, id);
             statement.execute();
             statement.close();
@@ -69,21 +73,21 @@ public class CartDaoImpl implements CartDao {
     }
 
     @Override
-    public List<Cart> findAll() {
+    public List<Stock> findAll() {
 
-        List<Cart> carts = new ArrayList<>();
+        List<Stock> stock = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select *from cart");
+            ResultSet resultSet = statement.executeQuery("select *from Stock");
             while (resultSet.next()){
-                Cart cart = new Cart(resultSet.getInt("id"));
-                 carts.add(cart);
+                Stock stock_ = new Stock(resultSet.getInt("id"), resultSet.getInt("product"), resultSet.getInt("quantity"));
+                stock.add(stock_);
             }
             statement.close();
-            return carts;
+            return stock;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return carts;
+        return stock;
     }
 }

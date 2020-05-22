@@ -18,22 +18,22 @@ public class CartItemsController {
     }
 
     @GetMapping("/{id}")
-    public CartItems findById(@PathVariable Long id) {
+    public CartItems findById(@PathVariable int id) throws SQLException {
 
         return cartItemsService.findById(id);
     }
     @PostMapping("/create")
-    void create(@RequestBody CartItems cartItems) {
+    void create(@RequestBody CartItems cartItems) throws SQLException {
 
         cartItemsService.create(cartItems);
     }
     @DeleteMapping("/{id}")
-    void deleteById(@PathVariable  int id) {
+    void deleteById(@PathVariable  int id) throws SQLException {
 
         cartItemsService.deleteById(id);
     }
     @GetMapping
-    List<CartItems> findAll() {
+    List<CartItems> findAll() throws SQLException {
 
         return cartItemsService.findAll();
     }

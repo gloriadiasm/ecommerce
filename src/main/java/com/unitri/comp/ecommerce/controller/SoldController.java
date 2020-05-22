@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/sold")
 public class SoldController {
 
     SoldService soldService;
@@ -16,31 +17,23 @@ public class SoldController {
     SoldController() throws SQLException {
         this.soldService = new SoldService();
     }
-    @GetMapping("/sold/{id}")
+    @GetMapping("/{id}")
     public Sold findById(@PathVariable int id) throws SQLException {
         return soldService.findById(id);
     }
-    @GetMapping("/sold/{name}")
-    public List<Sold> findSold(@PathVariable String name) throws SQLException {
-        return soldService.findSold(name);
-    }
-    @PostMapping("/sold/create")
+    @PostMapping("/create")
     public Sold create(@RequestBody Sold sold) throws SQLException {
         return soldService.create(sold);
     }
-    @PutMapping("/sold/update")
+    @PutMapping("/update")
     public Sold update(@RequestBody Sold sold) throws SQLException {
         return soldService.update(sold);
     }
-    @DeleteMapping("/sold/delete")
-    public void delete(@RequestBody Sold sold) throws SQLException {
-        soldService.delete(sold);
-    }
-    @DeleteMapping("/sold/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable int id) throws SQLException {
         soldService.deleteById(id);
     }
-    @GetMapping("/sold/select")
+    @GetMapping
     public List<Sold> findAll() throws SQLException {
         return soldService.findAll();
     }

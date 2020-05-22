@@ -1,4 +1,4 @@
-package com.unitri.comp.ecommerce.model.Service;
+package com.unitri.comp.ecommerce.model.service;
 
 import com.unitri.comp.ecommerce.model.dao.impl.StoreDaoImpl;
 import com.unitri.comp.ecommerce.model.entity.Store;
@@ -16,17 +16,11 @@ public class StoreService {
     public Store findById(int id) throws SQLException {
         return storeDAO.findById(id);
     }
-    public List<Store> findStore(String name) throws SQLException {
-        return storeDAO.findStore(name);
-    }
     public Store create(Store store) throws SQLException {
         return storeDAO.create(store);
     }
     public Store update(Store store) throws SQLException {
         return storeDAO.update(store);
-    }
-    public void delete(Store store) throws SQLException {
-        storeDAO.delete(store);
     }
     public void deleteById(int id) throws SQLException {
         storeDAO.deleteById(id);

@@ -18,19 +18,19 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public Order findById(@PathVariable Long id) {
+    public Order findById(@PathVariable int id) throws SQLException {
         return orderService.findById(id);
     }
     @PostMapping("/create")
-    void create(@RequestBody Order order) {
+    void create(@RequestBody Order order) throws SQLException {
         orderService.create(order);
     }
     @DeleteMapping("/{id}")
-    void deleteById(@PathVariable  int id) {
+    void deleteById(@PathVariable  int id) throws SQLException {
         orderService.deleteById(id);
     }
     @GetMapping
-    List<Order> findAll() {
+    List<Order> findAll() throws SQLException {
         return orderService.findAll();
     }
     @PutMapping

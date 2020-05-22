@@ -30,9 +30,9 @@ public class ClientDaoImpl implements ClientDao {
                         resultSet.getString("name"),
                         resultSet.getString("phone_number"),
                         resultSet.getString("email"),
-                        resultSet.getObject("address", Class<Address>),
-                        resultSet.getObject("cart"),
-                        resultSet.getBigDecimal("shipping"))
+                        resultSet.getInt("address"),
+                        resultSet.getDouble("shipping"),
+                        resultSet.getInt("cart"));
             }
             resultSet.close();
             return client;
@@ -46,11 +46,6 @@ public class ClientDaoImpl implements ClientDao {
     }
 
     @Override
-    public Client findClient(Client client) {
-        return null;
-    }
-
-    @Override
     public Client create(Client client) {
         return null;
     }
@@ -61,13 +56,9 @@ public class ClientDaoImpl implements ClientDao {
     }
 
     @Override
-    public void delete(Client client) {
+    public Address deleteById(int id) throws SQLException {
 
-    }
-
-    @Override
-    public void deleteById() {
-
+        return null;
     }
 
     @Override

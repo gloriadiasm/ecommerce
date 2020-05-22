@@ -17,7 +17,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product findById(@PathVariable Long id) throws SQLException {
+    public Product findById(@PathVariable int id) throws SQLException {
         return productService.findById(id);
     }
 
@@ -27,7 +27,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteById(@PathVariable Long id) throws SQLException {
+    void deleteById(@PathVariable int id) throws SQLException {
         productService.deleteById(id);
     }
 

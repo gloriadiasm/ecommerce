@@ -1,5 +1,6 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
+import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 import com.unitri.comp.ecommerce.model.dao.OrderDao;
 import com.unitri.comp.ecommerce.model.entity.Order;
@@ -17,7 +18,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public Order findById(Long id) {
+    public Order findById(int id) {
 
         Order order = null;
 
@@ -40,11 +41,11 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public void create(Order order) {
+    public Order create(Order order) {
         try {
             PreparedStatement statement = connection.prepareStatement("insert into order values(?,?,?)");
             statement.setInt(1, order.getId());
-            statement.setInt(2, order.getClientId());
+            statement.setInt(2, order.getClient());
             statement.setObject(3, order.getStatus());
             statement.execute();
             statement.close();
@@ -52,6 +53,7 @@ public class OrderDaoImpl implements OrderDao {
             e.printStackTrace();
         }
 
+        return order;
     }
 
     @Override
@@ -60,7 +62,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public void deleteById(int id) {
+    public Address deleteById(int id) {
 
         try {
             PreparedStatement statement = connection.prepareStatement("delete from order where id=?");
@@ -71,6 +73,7 @@ public class OrderDaoImpl implements OrderDao {
             e.printStackTrace();
         }
 
+        return null;
     }
 
     @Override

@@ -17,17 +17,17 @@ public class SupplierController {
     }
 
     @GetMapping("/{id}")
-    public Supplier findById(@PathVariable Long id) throws SQLException {
+    public Supplier findById(@PathVariable int id) throws SQLException {
         return supplierService.findById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     void create(@RequestBody Supplier supplier) throws SQLException {
         supplierService.create(supplier);
     }
 
     @DeleteMapping("/{id}")
-    void deleteById(@PathVariable Long id) throws SQLException {
+    void deleteById(@PathVariable int id) throws SQLException {
         supplierService.deleteById(id);
     }
 

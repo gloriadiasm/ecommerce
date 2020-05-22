@@ -19,27 +19,23 @@ public class CartController {
     }
 
     @GetMapping("/{id}")
-    public Cart findById(@PathVariable Long id) {
+    public Cart findById(@PathVariable int id) throws SQLException {
 
         return cartService.findById(id);
     }
-    @GetMapping("/client/")
-    public Cart findByClientId(@RequestBody @Valid Cart cart) {
 
-        return cartService.findByClientId(cart);
-    }
     @PostMapping("/create")
-    void create(@RequestBody Cart cart) {
+    void create(@RequestBody Cart cart) throws SQLException {
 
         cartService.create(cart);
     }
     @DeleteMapping("/{id}")
-    void deleteById(@PathVariable  int id) {
+    void deleteById(@PathVariable  int id) throws SQLException {
 
         cartService.deleteById(id);
     }
     @GetMapping
-    List<Cart> findAll() {
+    List<Cart> findAll() throws SQLException {
 
         return cartService.findAll();
     }

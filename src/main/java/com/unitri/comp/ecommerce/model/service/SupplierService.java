@@ -12,7 +12,7 @@ public class SupplierService {
 
     public SupplierService() throws SQLException {}
 
-    public Supplier findById(Long id) throws SQLException {
+    public Supplier findById(int id) throws SQLException {
         return supplierDao.findById(id);
     }
 
@@ -20,8 +20,8 @@ public class SupplierService {
         supplierDao.create(supplier);
     }
 
-    public void deleteById(Long id) throws SQLException {
-        supplierDao.deleteByid(id);
+    public void deleteById(int id) throws SQLException {
+        supplierDao.deleteById(id);
     }
 
     public List<Supplier> findAll() throws SQLException {

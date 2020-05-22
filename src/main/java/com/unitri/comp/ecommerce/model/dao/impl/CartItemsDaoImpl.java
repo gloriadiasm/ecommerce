@@ -1,6 +1,7 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.CartItemsDao;
+import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.entity.CartItems;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
@@ -16,7 +17,7 @@ public class CartItemsDaoImpl implements CartItemsDao {
     }
 
     @Override
-    public CartItems findById(Long id){
+    public CartItems findById(int id){
 
         CartItems cartItems = null;
 
@@ -40,20 +41,21 @@ public class CartItemsDaoImpl implements CartItemsDao {
     }
 
     @Override
-    public void create(CartItems cartItems) {
+    public CartItems create(CartItems cartItems) {
 
         try {
             PreparedStatement statement = connection.prepareStatement("insert into cart_items values(?,?,?,?,?)");
             statement.setInt(1, cartItems.getId());
-            statement.setInt(2, cartItems.getCart_id());
-            statement.setInt(3, cartItems.getProduct_id());
-            statement.setLong(4, cartItems.getTotalPrice());
+            statement.setInt(2, cartItems.getCart());
+            statement.setInt(3, cartItems.getProduct());
+            statement.setDouble(4, cartItems.getTotal_price());
             statement.setInt(5, cartItems.getQuantity());
             statement.execute();
             statement.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
+        return cartItems;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class CartItemsDaoImpl implements CartItemsDao {
     }
 
     @Override
-    public void deleteById(int id) {
+    public Address deleteById(int id) {
 
         try {
             PreparedStatement statement = connection.prepareStatement("delete from cart_items where id=?");
@@ -72,6 +74,7 @@ public class CartItemsDaoImpl implements CartItemsDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
+        return null;
     }
 
     @Override
