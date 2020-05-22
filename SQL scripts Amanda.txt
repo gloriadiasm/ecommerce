@@ -1,0 +1,19 @@
+CREATE TABLE `ecommerce`.`client` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  `phone_number` VARCHAR(11) NULL,
+  `email` VARCHAR(50) NULL,
+  `address_id` INT NULL,
+  `shipping_cost` DECIMAL NULL,
+  `cart_id` INT NULL,
+  `orders_id` INT NULL,
+  PRIMARY KEY (`id`));
+CREATE TABLE `ecommerce`.`address` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `street` VARCHAR(45) NULL,
+  `district` VARCHAR(45) NULL,
+  `state` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
+  `number` INT NULL,
+  `zip_code` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
