@@ -13,7 +13,7 @@ public class OrderController {
 
     final OrderService orderService;
 
-    OrderController() throws SQLException {
+    OrderController() {
         this.orderService = new OrderService();
     }
 

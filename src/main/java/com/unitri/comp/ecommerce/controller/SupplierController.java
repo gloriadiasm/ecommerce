@@ -12,7 +12,7 @@ import java.util.List;
 public class SupplierController {
     final SupplierService supplierService;
 
-    SupplierController() throws SQLException {
+    SupplierController() {
         this.supplierService = new SupplierService();
     }
 

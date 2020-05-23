@@ -11,9 +11,9 @@ import java.util.List;
 @RequestMapping("/sold")
 public class SoldController {
 
-    SoldService soldService;
+    final SoldService soldService;
 
-    SoldController() throws SQLException {
+    SoldController() {
         this.soldService = new SoldService();
     }
     @GetMapping("/{id}")
@@ -25,7 +25,7 @@ public class SoldController {
         return soldService.create(sold);
     }
     @PutMapping("/update")
-    public Sold update(@RequestBody Sold sold) throws SQLException {
+    public Sold update(@RequestBody Sold sold) {
         return soldService.update(sold);
     }
     @DeleteMapping("/{id}")

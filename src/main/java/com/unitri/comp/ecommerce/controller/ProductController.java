@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductController {
     final ProductService productService;
 
-    ProductController() throws SQLException {
+    ProductController() {
         this.productService = new ProductService();
     }
 

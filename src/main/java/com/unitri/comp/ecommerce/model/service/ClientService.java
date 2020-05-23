@@ -3,7 +3,6 @@ package com.unitri.comp.ecommerce.model.service;
 import com.unitri.comp.ecommerce.model.dao.impl.ClientDaoImpl;
 import com.unitri.comp.ecommerce.model.entity.Client;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class ClientService {

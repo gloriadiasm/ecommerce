@@ -13,7 +13,7 @@ public class CategoryController {
 
     final CategoryService categoryService;
 
-    public CategoryController() throws SQLException {
+    public CategoryController() {
         this.categoryService = new CategoryService();
     }
 

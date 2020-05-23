@@ -14,7 +14,7 @@ public class ClientController {
 
     final ClientService clientService;
 
-    public ClientController() throws SQLException {
+    public ClientController() {
         this.clientService = new ClientService();
     }
 

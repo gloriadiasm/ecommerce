@@ -12,7 +12,7 @@ public class AddressController {
 
     final AddressService addressService;
 
-    AddressController() throws SQLException {
+    AddressController() {
         this.addressService = new AddressService();
     }
 

@@ -13,7 +13,7 @@ public class CartController {
 
     final CartService cartService;
 
-    CartController() throws SQLException {
+    CartController() {
         this.cartService = new CartService();
     }
 

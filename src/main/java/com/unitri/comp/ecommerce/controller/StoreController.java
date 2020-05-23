@@ -10,9 +10,9 @@ import java.util.List;
 @RequestMapping("/store")
 public class StoreController {
 
-    StoreService storeService;
+    final StoreService storeService;
 
-    StoreController() throws SQLException {
+    StoreController() {
         this.storeService = new StoreService();
     }
     @GetMapping("/{id}")
