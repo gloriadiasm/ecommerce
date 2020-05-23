@@ -3,7 +3,7 @@ package com.unitri.comp.ecommerce.controller;
 import com.unitri.comp.ecommerce.model.entity.Store;
 import com.unitri.comp.ecommerce.model.service.StoreService;
 import org.springframework.web.bind.annotation.*;
-import java.sql.SQLException;
+
 import java.util.List;
 
 @RestController

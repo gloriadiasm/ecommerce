@@ -5,7 +5,6 @@ import com.unitri.comp.ecommerce.model.entity.Client;
 import com.unitri.comp.ecommerce.model.service.ClientService;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @RestController
