@@ -10,13 +10,13 @@ import java.util.List;
 public class SupplierService {
     final SupplierDao supplierDao = new SupplierDaoImpl();
 
-    public SupplierService() throws SQLException {}
+    public SupplierService() {}
 
-    public Supplier findById(int id) throws SQLException {
+    public Supplier findById(int id) {
         return supplierDao.findById(id);
     }
 
-    public void create(Supplier supplier) throws SQLException {
+    public void create(Supplier supplier) {
         supplierDao.create(supplier);
     }
 
@@ -26,5 +26,9 @@ public class SupplierService {
 
     public List<Supplier> findAll() throws SQLException {
         return supplierDao.findAll();
+    }
+    public void update(Supplier supplier) {
+
+        supplierDao.update(supplier);
     }
 }

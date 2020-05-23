@@ -4,7 +4,6 @@ import com.unitri.comp.ecommerce.model.entity.Cart;
 import com.unitri.comp.ecommerce.model.service.CartService;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,13 +18,13 @@ public class CartController {
     }
 
     @GetMapping("/{id}")
-    public Cart findById(@PathVariable int id) throws SQLException {
+    public Cart findById(@PathVariable int id) {
 
         return cartService.findById(id);
     }
 
     @PostMapping("/create")
-    void create(@RequestBody Cart cart) throws SQLException {
+    void create(@RequestBody Cart cart) {
 
         cartService.create(cart);
     }

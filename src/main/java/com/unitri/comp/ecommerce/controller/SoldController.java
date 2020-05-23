@@ -1,8 +1,7 @@
 package com.unitri.comp.ecommerce.controller;
 
-
-import com.unitri.comp.ecommerce.model.Service.SoldService;
 import com.unitri.comp.ecommerce.model.entity.Sold;
+import com.unitri.comp.ecommerce.model.service.SoldService;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -18,11 +17,11 @@ public class SoldController {
         this.soldService = new SoldService();
     }
     @GetMapping("/{id}")
-    public Sold findById(@PathVariable int id) throws SQLException {
+    public Sold findById(@PathVariable int id) {
         return soldService.findById(id);
     }
     @PostMapping("/create")
-    public Sold create(@RequestBody Sold sold) throws SQLException {
+    public Sold create(@RequestBody Sold sold) {
         return soldService.create(sold);
     }
     @PutMapping("/update")

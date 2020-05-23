@@ -1,6 +1,5 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
-import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 import com.unitri.comp.ecommerce.model.dao.OrderDao;
 import com.unitri.comp.ecommerce.model.entity.Order;
@@ -14,7 +13,7 @@ public class OrderDaoImpl implements OrderDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public OrderDaoImpl() throws SQLException {
+    public OrderDaoImpl() {
     }
 
     @Override
@@ -24,7 +23,7 @@ public class OrderDaoImpl implements OrderDao {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select *from order where id = "+id);
+            ResultSet resultSet = statement.executeQuery("select *from `order` where id = "+id);
 
             while(resultSet.next()) {
                 order = new Order(resultSet.getInt("id"),
@@ -43,7 +42,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public Order create(Order order) {
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into order values(?,?,?)");
+            PreparedStatement statement = connection.prepareStatement("insert into `order` values(?,?,?)");
             statement.setInt(1, order.getId());
             statement.setInt(2, order.getClient());
             statement.setObject(3, order.getStatus());
@@ -57,23 +56,16 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public Order update(Order order) {
-        return null;
-    }
-
-    @Override
-    public Address deleteById(int id) {
+    public void deleteById(int id) {
 
         try {
-            PreparedStatement statement = connection.prepareStatement("delete from order where id=?");
+            PreparedStatement statement = connection.prepareStatement("delete from `order` where id=?");
             statement.setInt(1, id);
             statement.execute();
             statement.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-        return null;
     }
 
     @Override

@@ -7,22 +7,22 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AddressService {
-    AddressDaoImpl addressDao;
+    final AddressDaoImpl addressDao;
 
-    public AddressService() throws SQLException {
+    public AddressService() {
         this.addressDao = new AddressDaoImpl();
     }
 
-    public Address findById(int id) throws SQLException {
+    public Address findById(int id) {
         return addressDao.findById(id);
     }
-    public Address create(Address address) throws SQLException {
-        return addressDao.create(address);
+    public void create(Address address) {
+        addressDao.create(address);
     }
-    public Address deleteById(int id) throws SQLException {
-        return addressDao.deleteById(id);
+    public void deleteById(int id) {
+        addressDao.deleteById(id);
     }
-    public List<Address> findAll() throws SQLException {
+    public List<Address> findAll() {
         return addressDao.findAll();
     }
 

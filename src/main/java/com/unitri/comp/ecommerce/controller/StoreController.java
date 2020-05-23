@@ -16,23 +16,23 @@ public class StoreController {
         this.storeService = new StoreService();
     }
     @GetMapping("/{id}")
-    public Store findById(@PathVariable int id) throws SQLException {
+    public Store findById(@PathVariable int id) {
         return storeService.findById(id);
     }
     @PostMapping
-    public Store create(@RequestBody Store store) throws SQLException {
+    public Store create(@RequestBody Store store) {
         return storeService.create(store);
     }
     @PutMapping
-    public Store update(@RequestBody Store store) throws SQLException {
+    public Store update(@RequestBody Store store) {
         return storeService.update(store);
     }
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable int id) throws SQLException {
+    public void deleteById(@PathVariable int id) {
         storeService.deleteById(id);
     }
     @GetMapping
-    public List<Store> findAll() throws SQLException {
+    public List<Store> findAll() {
         return storeService.findAll();
     }
 

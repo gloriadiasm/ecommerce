@@ -1,7 +1,6 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.SoldDao;
-import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.entity.Sold;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
@@ -13,12 +12,12 @@ public class SoldDaoImpl implements SoldDao {
 
     private final Connection connection;
 
-    public SoldDaoImpl() throws SQLException {
+    public SoldDaoImpl() {
         this.connection =  new ConnectionFactory().getConnection();
     }
 
     @Override
-    public Sold findById(int id) throws SQLException {
+    public Sold findById(int id) {
 
         Sold sold = null;
 
@@ -34,14 +33,12 @@ public class SoldDaoImpl implements SoldDao {
             return sold;
         }catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            connection.close();
         }
         return sold;
     }
 
     @Override
-    public Sold create(Sold sold) throws SQLException {
+    public Sold create(Sold sold) {
         try {
             int id = sold.getId();
             int product_id = sold.getProduct();
@@ -60,14 +57,11 @@ public class SoldDaoImpl implements SoldDao {
 
             throw new RuntimeException(e);
 
-        }finally {
-            connection.close();
-            return null;
         }
     }
 
     @Override
-    public Sold update(Sold sold) throws SQLException {
+    public Sold update(Sold sold) {
         int id = sold.getId();
         int product= sold.getProduct();
         int quantity = sold.getQuantity();
@@ -84,15 +78,12 @@ public class SoldDaoImpl implements SoldDao {
             return sold;
         }catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
-            return sold;
-
         }
+
     }
 
     @Override
-    public Address deleteById(int id) throws SQLException {
+    public void deleteById(int id) throws SQLException {
         String sql = "delete from sold where id="+id;
         try {
             Statement statement = connection.createStatement();
@@ -104,7 +95,6 @@ public class SoldDaoImpl implements SoldDao {
             this.connection.close();
         }
 
-        return null;
     }
 
     @Override

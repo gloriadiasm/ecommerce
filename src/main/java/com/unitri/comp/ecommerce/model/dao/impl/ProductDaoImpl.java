@@ -1,7 +1,6 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.ProductDao;
-import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.entity.Product;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
@@ -12,10 +11,10 @@ import java.util.List;
 public class ProductDaoImpl implements ProductDao {
     private final Connection connection = new ConnectionFactory().getConnection();
 
-    public ProductDaoImpl() throws SQLException {}
+    public ProductDaoImpl() {}
 
     @Override
-    public Product findById(int id) throws SQLException {
+    public Product findById(int id) {
         Product product = null;
 
         try {
@@ -34,8 +33,6 @@ public class ProductDaoImpl implements ProductDao {
             return product;
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            connection.close();
         }
         return product;
     }
@@ -59,12 +56,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Product update(Product address) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public Address deleteById(int id) throws SQLException {
+    public void deleteById(int id) {
         try {
             PreparedStatement statement = connection.prepareStatement("delete from product where id=?");
             statement.setInt(1, id);
@@ -73,11 +65,11 @@ public class ProductDaoImpl implements ProductDao {
         }catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+
     }
 
     @Override
-    public List<Product> findAll() throws SQLException {
+    public List<Product> findAll() {
         List<Product> products = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();

@@ -17,23 +17,23 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
-    public Address findById(@PathVariable int id) throws SQLException {
+    public Address findById(@PathVariable int id) {
 
         return addressService.findById(id);
     }
 
     @PostMapping("/create")
-    void create(@RequestBody Address address) throws SQLException {
+    void create(@RequestBody Address address) {
 
         addressService.create(address);
     }
     @DeleteMapping("/{id}")
-    void deleteById(@PathVariable  int id) throws SQLException {
+    void deleteById(@PathVariable  int id) {
 
         addressService.deleteById(id);
     }
     @GetMapping
-    List<Address> findAll() throws SQLException {
+    List<Address> findAll() {
 
         return addressService.findAll();
     }

@@ -11,14 +11,14 @@ public class CartService{
 
     final CartDao cartDao = new CartDaoImpl();
 
-    public CartService() throws SQLException {
+    public CartService() {
     }
 
-    public Cart findById(int id) throws SQLException {
+    public Cart findById(int id) {
         return cartDao.findById(id);
     }
 
-    public void create(Cart cart) throws SQLException {
+    public void create(Cart cart) {
         cartDao.create(cart);
     }
 

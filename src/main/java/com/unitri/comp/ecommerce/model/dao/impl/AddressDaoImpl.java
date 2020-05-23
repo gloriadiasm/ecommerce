@@ -10,14 +10,14 @@ import java.util.List;
 
 public class AddressDaoImpl implements AddressDao {
 
-    private Connection connection;
+    private final Connection connection;
 
-    public AddressDaoImpl() throws SQLException {
+    public AddressDaoImpl() {
         this.connection = new ConnectionFactory().getConnection();
     }
 
     @Override
-    public Address findById(int id) throws SQLException{
+    public Address findById(int id) {
         Address address = null;
 
         try {
@@ -32,14 +32,12 @@ public class AddressDaoImpl implements AddressDao {
             return address;
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            connection.close();
         }
         return address;
     }
 
     @Override
-    public Address create(Address address) throws SQLException {
+    public Address create(Address address) {
         try {
             PreparedStatement statement = connection.prepareStatement("insert into address(street, district, state, city, number, zip_code) values(?,?,?,?,?,?)");
             statement.setString(1, address.getStreet());
@@ -57,12 +55,7 @@ public class AddressDaoImpl implements AddressDao {
     }
 
     @Override
-    public Address update(Address address) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public Address deleteById(int id) throws SQLException {
+    public void deleteById(int id) {
         try {
             PreparedStatement statement = connection.prepareStatement("delete from address where id=?");
             statement.setInt(1, id);
@@ -71,11 +64,10 @@ public class AddressDaoImpl implements AddressDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return null;
     }
 
     @Override
-    public List<Address> findAll() throws SQLException {
+    public List<Address> findAll() {
 
         List<Address> addresses = new ArrayList<>();
         try {

@@ -1,7 +1,6 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.CartDao;
-import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 import com.unitri.comp.ecommerce.model.entity.Cart;
 import java.sql.*;
@@ -12,11 +11,11 @@ public class CartDaoImpl implements CartDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public CartDaoImpl() throws SQLException {
+    public CartDaoImpl() {
     }
 
     @Override
-    public Cart findById(int id) throws SQLException{
+    public Cart findById(int id) {
 
         Cart cart = null;
 
@@ -50,12 +49,7 @@ public class CartDaoImpl implements CartDao {
     }
 
     @Override
-    public Cart update(Cart address) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public Address deleteById(int id) {
+    public void deleteById(int id) {
 
         try {
             PreparedStatement statement = connection.prepareStatement("delete from cart where id=?");
@@ -65,7 +59,6 @@ public class CartDaoImpl implements CartDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return null;
     }
 
     @Override

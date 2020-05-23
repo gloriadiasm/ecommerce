@@ -11,14 +11,14 @@ public class OrderService {
 
     final OrderDao orderDao = new OrderDaoImpl();
 
-    public OrderService() throws SQLException {
+    public OrderService() {
     }
 
-    public Order findById(int id) throws SQLException {
+    public Order findById(int id) {
         return orderDao.findById(id);
     }
 
-    public void create(Order order) throws SQLException {
+    public void create(Order order) {
         orderDao.create(order);
     }
 

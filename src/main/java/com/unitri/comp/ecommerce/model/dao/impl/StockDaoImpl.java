@@ -1,7 +1,6 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.StockDao;
-import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.entity.Stock;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 
@@ -13,7 +12,7 @@ public class StockDaoImpl implements StockDao {
 
     private final Connection connection =  new ConnectionFactory().getConnection();
 
-    public StockDaoImpl() throws SQLException {
+    public StockDaoImpl() {
     }
 
     @Override
@@ -52,14 +51,8 @@ public class StockDaoImpl implements StockDao {
         }
         return stock;
     }
-
     @Override
-    public Stock update(Stock address) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public Address deleteById(int id) {
+    public void deleteById(int id) {
 
         try {
             PreparedStatement statement = connection.prepareStatement("delete from stock where id=?");
@@ -69,7 +62,7 @@ public class StockDaoImpl implements StockDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return null;
+
     }
 
     @Override

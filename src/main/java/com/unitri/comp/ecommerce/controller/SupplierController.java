@@ -17,12 +17,12 @@ public class SupplierController {
     }
 
     @GetMapping("/{id}")
-    public Supplier findById(@PathVariable int id) throws SQLException {
+    public Supplier findById(@PathVariable int id) {
         return supplierService.findById(id);
     }
 
     @PostMapping
-    void create(@RequestBody Supplier supplier) throws SQLException {
+    void create(@RequestBody Supplier supplier) {
         supplierService.create(supplier);
     }
 
@@ -34,5 +34,10 @@ public class SupplierController {
     @GetMapping
     List<Supplier> findAll() throws SQLException {
         return supplierService.findAll();
+    }
+
+    @PutMapping("/update")
+    void update(@RequestBody Supplier supplier) {
+        supplierService.update(supplier);
     }
 }

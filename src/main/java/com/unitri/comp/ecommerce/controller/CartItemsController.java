@@ -18,12 +18,12 @@ public class CartItemsController {
     }
 
     @GetMapping("/{id}")
-    public CartItems findById(@PathVariable int id) throws SQLException {
+    public CartItems findById(@PathVariable int id) {
 
         return cartItemsService.findById(id);
     }
     @PostMapping("/create")
-    void create(@RequestBody CartItems cartItems) throws SQLException {
+    void create(@RequestBody CartItems cartItems) {
 
         cartItemsService.create(cartItems);
     }

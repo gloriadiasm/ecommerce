@@ -17,12 +17,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product findById(@PathVariable int id) throws SQLException {
+    public Product findById(@PathVariable int id) {
         return productService.findById(id);
     }
 
     @PostMapping("/create")
-    void create(@RequestBody Product product) throws SQLException {
+    void create(@RequestBody Product product) {
         productService.create(product);
     }
 

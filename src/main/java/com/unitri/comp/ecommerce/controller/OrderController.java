@@ -18,11 +18,11 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public Order findById(@PathVariable int id) throws SQLException {
+    public Order findById(@PathVariable int id) {
         return orderService.findById(id);
     }
     @PostMapping("/create")
-    void create(@RequestBody Order order) throws SQLException {
+    void create(@RequestBody Order order) {
         orderService.create(order);
     }
     @DeleteMapping("/{id}")
@@ -33,8 +33,5 @@ public class OrderController {
     List<Order> findAll() throws SQLException {
         return orderService.findAll();
     }
-    @PutMapping
-    void update(Order order){
 
-    }
 }

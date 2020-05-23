@@ -1,7 +1,6 @@
 package com.unitri.comp.ecommerce.model.dao.impl;
 
 import com.unitri.comp.ecommerce.model.dao.StoreDao;
-import com.unitri.comp.ecommerce.model.entity.Address;
 import com.unitri.comp.ecommerce.model.entity.Store;
 import com.unitri.comp.ecommerce.model.factory.ConnectionFactory;
 import java.sql.*;
@@ -12,12 +11,12 @@ public class StoreDaoImpl implements StoreDao {
 
     private final Connection connection;
 
-    public StoreDaoImpl() throws SQLException {
+    public StoreDaoImpl() {
         this.connection =  new ConnectionFactory().getConnection();
     }
 
     @Override
-    public Store findById(int id) throws SQLException{
+    public Store findById(int id) {
 
         Store store = null;
 
@@ -35,14 +34,12 @@ public class StoreDaoImpl implements StoreDao {
             return store;
         }catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            connection.close();
         }
         return store;
     }
 
     @Override
-    public Store create(Store store) throws SQLException {
+    public Store create(Store store) {
 
         try {
             int id = store.getId();
@@ -63,14 +60,12 @@ public class StoreDaoImpl implements StoreDao {
 
             throw new RuntimeException(e);
 
-        }finally {
-            connection.close();
         }
     }
 
 
     @Override
-    public Store update(Store store) throws SQLException {
+    public Store update(Store store) {
 
         int id = store.getId();
         String name = store.getName();
@@ -90,15 +85,11 @@ public class StoreDaoImpl implements StoreDao {
             return store;
         }catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
-            return null;
-
         }
     }
 
     @Override
-    public Address deleteById(int id) throws SQLException {
+    public void deleteById(int id) {
         String sql = "delete from store where id_store="+id;
         try {
             Statement statement = connection.createStatement();
@@ -108,18 +99,15 @@ public class StoreDaoImpl implements StoreDao {
             statement.close();
         }catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
         }
 
-        return null;
     }
 
     @Override
-    public List<Store> findAll() throws SQLException {
+    public List<Store> findAll() {
 
         try {
-            List<Store> stores = new ArrayList<Store>();
+            List<Store> stores = new ArrayList<>();
             PreparedStatement statement = this.connection.prepareStatement("select * from store;");
 
             ResultSet resultSet = statement.executeQuery();
@@ -140,8 +128,6 @@ public class StoreDaoImpl implements StoreDao {
             return stores;
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            this.connection.close();
         }
 
     }

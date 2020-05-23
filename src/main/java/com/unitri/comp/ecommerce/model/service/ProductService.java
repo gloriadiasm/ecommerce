@@ -10,13 +10,13 @@ import java.util.List;
 public class ProductService {
     final ProductDao productDao = new ProductDaoImpl();
 
-    public ProductService() throws SQLException {}
+    public ProductService() {}
 
-    public Product findById(int id) throws SQLException {
+    public Product findById(int id) {
        return productDao.findById(id);
     }
 
-    public void create(Product product) throws SQLException {
+    public void create(Product product) {
         productDao.create(product);
     }
 

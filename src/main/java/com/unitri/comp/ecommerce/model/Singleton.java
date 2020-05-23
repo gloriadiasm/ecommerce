@@ -1,14 +1,15 @@
 package com.unitri.comp.ecommerce.model;
 
 public class Singleton {
-
-    private static String uniqueInstance = new String();
+    private static Singleton uniqueInstance;
 
     private Singleton() {
     }
 
-    public static String getInstance() {
+    public static synchronized Singleton getInstance() {
+        if (uniqueInstance == null)
+            uniqueInstance = new Singleton();
+
         return uniqueInstance;
     }
 }
-
