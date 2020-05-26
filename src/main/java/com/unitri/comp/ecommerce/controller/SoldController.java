@@ -16,13 +16,9 @@ public class SoldController {
     SoldController() throws SQLException {
         this.soldService = new SoldService();
     }
-    @GetMapping("/sold/{id}")
+    @GetMapping("/sold/select/{id}")
     public Sold findById(@PathVariable int id) throws SQLException {
         return soldService.findById(id);
-    }
-    @GetMapping("/sold/{name}")
-    public List<Sold> findSold(@PathVariable String name) throws SQLException {
-        return soldService.findSold(name);
     }
     @PostMapping("/sold/create")
     public Sold create(@RequestBody Sold sold) throws SQLException {

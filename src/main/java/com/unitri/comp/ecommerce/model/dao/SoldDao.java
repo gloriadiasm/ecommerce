@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface SoldDao {
     Sold findById(int id) throws SQLException;
-    List<Sold> findSold(String name) throws SQLException;
     Sold create(Sold sold) throws SQLException;
     Sold update(Sold sold) throws SQLException;
     void delete(Sold sold) throws SQLException;

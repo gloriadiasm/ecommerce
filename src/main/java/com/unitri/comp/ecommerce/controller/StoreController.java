@@ -16,12 +16,12 @@ public class StoreController {
     StoreController() throws SQLException {
         this.storeService = new StoreService();
     }
-    @GetMapping("/store/{id}")
+    @GetMapping("/store/select/{id}")
     public Store findById(@PathVariable int id) throws SQLException {
         return storeService.findById(id);
     }
     @GetMapping("/store/{name}")
-    public List<Store> findSold(@PathVariable String name) throws SQLException {
+    public List<Store> findStore(@PathVariable String name) throws SQLException {
         return storeService.findStore(name);
     }
     @PostMapping("/store/create")

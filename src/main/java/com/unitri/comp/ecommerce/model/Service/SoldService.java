@@ -16,9 +16,6 @@ public class SoldService {
     public Sold findById(int id) throws SQLException {
         return soldDao.findById(id);
     }
-    public List<Sold> findSold(String name) throws SQLException {
-        return soldDao.findSold(name);
-    }
     public Sold create(Sold sold) throws SQLException {
         return soldDao.create(sold);
     }
